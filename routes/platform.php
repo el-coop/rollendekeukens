@@ -27,11 +27,5 @@ $this->router->screen('/main', PlatformScreen::class)->name('platform.main');
 $this->router->screen('users/{users}/edit', UserEditScreen::class)->name('platform.systems.users.edit');
 $this->router->screen('users', UserListScreen::class)->name('platform.systems.users');
 
-// Roles...
-$this->router->screen('roles/{roles}/edit', RoleEditScreen::class)->name('platform.systems.roles.edit');
-$this->router->screen('roles/create', RoleEditScreen::class)->name('platform.systems.roles.create');
-$this->router->screen('roles', RoleListScreen::class)->name('platform.systems.roles');
-
 // Example...
-$this->router->screen('example', ExampleScreen::class)->name('platform.example');
 //Route::screen('/dashboard/screen/idea', 'Idea::class','platform.screens.idea');

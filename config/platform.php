@@ -80,7 +80,9 @@ return [
     */
 
     'resource' => [
-        'stylesheets' => [],
+        'stylesheets' => [
+            '/css/platform.css'
+        ],
         'scripts'     => [],
     ],
 
@@ -96,8 +98,8 @@ return [
     */
 
     'template' => [
-        'header' => 'platform::header',
-        'footer' => 'platform::footer',
+        'header' => 'platform.header',
+        'footer' => 'platform.footer',
     ],
 
 ];
