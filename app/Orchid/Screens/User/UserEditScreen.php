@@ -26,14 +26,14 @@ class UserEditScreen extends Screen
      *
      * @var string
      */
-    public $name = 'User';
+    public $name = 'panel.user';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'All registered users';
+    public $description = 'panel.userDescription';
 
     /**
      * @var string
@@ -53,7 +53,6 @@ class UserEditScreen extends Screen
 
         return [
             'user'       => $user,
-            'permission' => $user->getStatusPermission(),
         ];
     }
 
@@ -69,10 +68,6 @@ class UserEditScreen extends Screen
             DropDown::make(__('Settings'))
                 ->icon('icon-open')
                 ->list([
-                    Button::make(__('Login as user'))
-                        ->icon('icon-login')
-                        ->method('loginAs'),
-
                   ModalToggle::make(__('Change Password'))
                         ->icon('icon-lock-open')
                         ->title(__('Change Password'))
@@ -99,7 +94,6 @@ class UserEditScreen extends Screen
     {
         return [
             UserEditLayout::class,
-            UserRoleLayout::class,
 
             Layout::modal('password', [
                 Layout::rows([
@@ -120,20 +114,9 @@ class UserEditScreen extends Screen
      */
     public function save(User $user, Request $request)
     {
-        $permissions = $request->get('permissions', []);
-        $roles = $request->input('user.roles', []);
-
-        foreach ($permissions as $key => $value) {
-            unset($permissions[$key]);
-            $permissions[base64_decode($key)] = $value;
-        }
-
+      
         $user
             ->fill($request->get('user'))
-            ->replaceRoles($roles)
-            ->fill([
-                'permissions' => $permissions,
-            ])
             ->save();
 
         Alert::info(__('User was saved.'));
@@ -156,19 +139,7 @@ class UserEditScreen extends Screen
 
         return redirect()->route('platform.systems.users');
     }
-
-    /**
-     * @param User $user
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function loginAs(User $user)
-    {
-        UserSwitch::loginAs($user);
-
-        return redirect()->route(config('platform.index'));
-    }
-
+    
     /**
      * @param User    $user
      * @param Request $request

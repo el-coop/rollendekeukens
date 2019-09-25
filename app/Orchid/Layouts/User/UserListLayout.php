@@ -21,12 +21,6 @@ class UserListLayout extends Table
     public function columns(): array
     {
         return [
-            TD::set('id', 'ID')
-                ->align(TD::ALIGN_CENTER)
-                ->width('100px')
-                ->sort()
-                ->link('platform.systems.users.edit', 'id'),
-
             TD::set('name', __('Name'))
                 ->sort()
                 ->filter(TD::FILTER_TEXT)

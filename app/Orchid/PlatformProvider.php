@@ -21,15 +21,10 @@ class PlatformProvider extends ServiceProvider
     public function boot(Dashboard $dashboard)
     {
         View::composer('platform::dashboard', MainMenuComposer::class);
-        View::composer('platform::systems', SystemMenuComposer::class);
 
         $dashboard
             //->registerPermissions($this->registerPermissionsMain())
             ->registerPermissions($this->registerPermissionsSystems());
-
-        $dashboard->registerGlobalSearch([
-            //...Models
-        ]);
     }
 
     /**
