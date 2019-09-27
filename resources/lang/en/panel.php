@@ -20,6 +20,8 @@ return [
     'update' => 'Update',
     'text' => 'Text',
     'url' => 'URL',
-    'logo' => 'Logo'
+    'logo' => 'Logo',
+    'change' => 'Change',
+    'select-image' => 'Select Image',
     
 ];

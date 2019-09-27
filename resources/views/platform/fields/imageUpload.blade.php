@@ -11,7 +11,7 @@
                     <img class="image-upload__preview-image">
                     <div type="button" class="image-upload__preview-label" data-action="click->fields--image-upload#clear">
                         <i class="image-upload__preview-label-icon icon-close"></i>
-                        <span>Remove file</span>
+                        <span>@lang('panel.change')</span>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                         <i class="icon-cloud-upload"></i>
                     </span>
                 <span class="has-text-centered">
-                    Add image
+                    @lang('panel.select-image')
                 </span>
             </div>
 
