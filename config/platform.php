@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Sub-Domain Routing
@@ -12,9 +12,9 @@ return [
     | Example: 'admin.example.com'
     |
     */
-
+    
     'domain' => env('DASHBOARD_DOMAIN', null),
-
+    
     /*
     |--------------------------------------------------------------------------
     | Route Prefixes
@@ -26,9 +26,9 @@ return [
     | Example: '/', '/admin', '/dashboard'
     |
     */
-
+    
     'prefix' => env('DASHBOARD_PREFIX', '/dashboard'),
-
+    
     /*
     |--------------------------------------------------------------------------
     | Middleware
@@ -38,12 +38,12 @@ return [
     | requests entering your application.
     |
     */
-
+    
     'middleware' => [
-        'public'  => ['web'],
+        'public' => ['web'],
         'private' => ['web', 'platform'],
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Login page
@@ -54,9 +54,9 @@ return [
     | ability to change, use the command to change: `php artisan ui:auth`
     |
     */
-
-    'auth'  => true,
-
+    
+    'auth' => true,
+    
     /*
     |--------------------------------------------------------------------------
     | Main Route
@@ -67,7 +67,7 @@ return [
     |
     */
     'index' => 'platform.main',
-
+    
     /*
     |--------------------------------------------------------------------------
     | Dashboard Resource
@@ -78,14 +78,16 @@ return [
     | Example: '/application.js', '/style/classic/ui.css'
     |
     */
-
+    
     'resource' => [
         'stylesheets' => [
             '/css/platform.css'
         ],
-        'scripts'     => [],
+        'scripts' => [
+            '/js/platform.js'
+        ],
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Template view
@@ -96,7 +98,7 @@ return [
     | suitable for specifying the name, logo, accompanying documents, etc.
     |
     */
-
+    
     'template' => [
         'header' => 'platform.header',
         'footer' => 'platform.footer',
