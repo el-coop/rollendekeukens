@@ -23,5 +23,9 @@ return [
     'logo' => 'Logo',
     'change' => 'Change',
     'select-image' => 'Select Image',
+    'add-footer-link' => 'Add footer link',
+    'linkModalTitle' => 'Link data',
+    'linksTab' => 'Footer Links',
+    'settingsTab' => 'Site Settings'
     
 ];
