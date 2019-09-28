@@ -46,32 +46,4 @@ class ImageUpload extends Field {
         return $input;
     }
     
-    public function render() {
-        if (!$this->isSee()) {
-            return;
-        }
-    
-        $this->runBeforeRender();
-        $this->checkRequired();
-        $this->translate();
-        $this->checkError();
-    
-        $id = $this->getId();
-        $this->set('id', $id);
-    
-        $this->modifyName();
-        $this->modifyValue();
-    
-        $errors = $this->getErrorsMessage();
-       
-        return view($this->view, array_merge($this->getAttributes(), [
-            'attributes' => $this->getAllowAttributes(),
-            'id' => $id,
-            'old' => $this->getOldValue(),
-            'slug' => $this->getSlug(),
-            'oldName' => $this->getOldName(),
-            'typeForm' => $this->typeForm ?? $this->vertical()->typeForm,
-        ]))
-            ->withErrors($errors);
-    }
 }

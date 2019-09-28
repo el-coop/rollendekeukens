@@ -22,14 +22,16 @@ class SiteSettingsLayout extends Rows {
     protected function fields(): array {
         
         return [
+            ImageUpload::make('logo')
+                ->title(__('panel.logo')),
             [
                 Input::make('instagram')
-                    ->type('text')
+                    ->type('url')
                     ->max(255)
                     ->title(__('panel.instagram')),
                 
                 Input::make('facebook')
-                    ->type('text')
+                    ->type('url')
                     ->max(255)
                     ->title(__('panel.facebook')),
             ],
@@ -40,17 +42,9 @@ class SiteSettingsLayout extends Rows {
             Input::make('links-title')
                 ->type('text')
                 ->title(__('panel.footer-links-title')),
-            ImageUpload::make('logo')
-                ->title(__('panel.logo')),
-    
-    
-            // Need to make a better system to save links
-//            Matrix::make('links')
-//                ->title(_('panel.footer-links'))
-//                ->columns([__('panel.text'), __('panel.url')]),
+            
             Button::make(__('panel.update'))
-                ->class('btn btn-primary mx-auto')
-                ->method('store')
+                ->type(Button::PRIMARY),
         ];
     }
 }
