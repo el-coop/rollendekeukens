@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Orchid\Screens;
 
 use Alert;
+use App\Http\Requests\DestroyFooterLinkRequest;
+use App\Http\Requests\UpdateFooterLinkRequest;
 use App\Http\Requests\UpdateSettingsRequest;
 use App\Models\FooterLink;
 use App\Models\SiteSetting;
@@ -116,24 +118,22 @@ class PlatformScreen extends Screen {
         ];
     }
     
-    public function saveLink(Request $request) {
-        $link = $request->input('link');
-        $footerLink = new FooterLink;
-        if (isset($link['id'])) {
-            $footerLink = FooterLink::find($link['id']);
-        }
+    public function saveLink(UpdateFooterLinkRequest $request) {
+        $request->commit();
+        Alert::success(__('panel.linkSaved'));
+        return back();
+    }
+    
+    public function deleteLink($link, DestroyFooterLinkRequest $request) {
+        $request->commit();
         
-        $footerLink->url = $link['url'];
-        $footerLink->text = $link['text'];
-        $footerLink->save();
-        
-        Alert::info(__('Link was saved.'));
+        Alert::info(__('panel.linkDeleted'));
         return back();
     }
     
     public function store(UpdateSettingsRequest $request) {
         $request->commit();
-        Alert::success('Settings saved.');
+        Alert::success(__('panel.settingsSaved'));
         return back();
     }
 }

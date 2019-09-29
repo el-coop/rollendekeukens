@@ -44,6 +44,7 @@ class SiteSettingsLayout extends Rows {
                 ->title(__('panel.footer-links-title')),
             
             Button::make(__('panel.update'))
+                ->method('store')
                 ->type(Button::PRIMARY),
         ];
     }
