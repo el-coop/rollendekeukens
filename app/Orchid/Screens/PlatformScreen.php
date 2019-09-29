@@ -68,11 +68,14 @@ class PlatformScreen extends Screen {
             Link::make('Users')
                 ->href(action('\App\Orchid\Screens\User\UserListScreen@handle'))
                 ->icon('icon-user'),
-            
+			Link::make('Albums')
+				->href(action('\App\Orchid\Screens\Album\AlbumListScreen@handle'))
+				->icon('icon-picture'),
             Link::make('Site')
                 ->href(env('APP_URL'))
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
+
         ];
     }
     
