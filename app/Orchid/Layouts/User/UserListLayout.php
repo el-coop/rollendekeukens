@@ -31,28 +31,31 @@ class UserListLayout extends Table
                     $avatar = e($user->getAvatar());
                     $name = e($user->getNameTitle());
                     $sub = e($user->getSubTitle());
-                    $route = route('platform.systems.users.edit', $user->id);
-
-                    return "<a href='{$route}'>
-                                <div class='d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center'>
-                                    <span class='thumb-xs avatar m-r-xs d-none d-md-inline-block'>
-                                      <img src='{$avatar}' class='bg-light'>
-                                    </span>
-                                    <div class='ml-sm-3 ml-md-0 ml-xl-3 mt-2 mt-sm-0 mt-md-2 mt-xl-0'>
-                                      <p class='mb-0'>{$name}</p>
-                                      <small class='text-xs text-muted'>{$sub}</small>
-                                    </div>
-                                </div>
-                            </a>";
-                }),
-
+                    return "<div class='d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center'>
+                              <span class='thumb-xs avatar m-r-xs d-none d-md-inline-block'>
+                                <img src='{$avatar}' class='bg-light'>
+                              </span>
+                              <div class='ml-sm-3 ml-md-0 ml-xl-3 mt-2 mt-sm-0 mt-md-2 mt-xl-0'>
+                               <p class='mb-0'>{$name}</p>
+                               <small class='text-xs text-muted'>{$sub}</small>
+                              </div>
+                            </div>";
+                })->loadModalAsync('userModal', 'updateUser', 'id', 'name'),
             TD::set('email', __('Email'))
-                ->loadModalAsync('oneAsyncModal', 'saveUser', 'id', 'email')
+                ->loadModalAsync('userModal', 'updateUser', 'id', 'email')
                 ->filter(TD::FILTER_TEXT)
                 ->sort(),
+			TD::set('id', __('delete'))
+				->render(function (User $user) {
 
-            TD::set('updated_at', __('Last edit'))
-                ->sort(),
+					$route = action('\App\Orchid\Screens\User\UserListScreen@handle', [
+						'method' => $user->id,
+						'argument' => 'deleteUser'
+					]);
+
+					return view('platform.fields.deleteButton', compact('route'));
+				}),
         ];
+
     }
 }
