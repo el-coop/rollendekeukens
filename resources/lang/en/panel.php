@@ -26,6 +26,9 @@ return [
     'add-footer-link' => 'Add footer link',
     'linkModalTitle' => 'Link data',
     'linksTab' => 'Footer Links',
-    'settingsTab' => 'Site Settings'
+    'settingsTab' => 'Site Settings',
+    'settingsSaved' => 'Settings Saved.',
+    'linkSaved' => 'Link Saved.',
+    'linkDeleted' => 'Link Deleted.'
     
 ];
