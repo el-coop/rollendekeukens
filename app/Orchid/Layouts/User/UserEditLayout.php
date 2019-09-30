@@ -18,21 +18,36 @@ class UserEditLayout extends Rows
      */
     public function fields(): array
     {
+		$passwordInput = Input::make('password')->type('password')
+			->title(__('passwords.password'))
+			->placeholder(__('passwords.password'))
+			->horizontal();
+		$passwordConfirm = Input::make('password_confirmation')->type('password')
+			->title(__('passwords.confirm'))
+			->placeholder(__('passwords.confirm'))
+			->horizontal();
+    	if ($this->query['user'] && !$this->query['user']->id ){
+    		$passwordInput->required();
+    		$passwordConfirm->required();
+		}
         return [
+        	Input::make('user.id')->type('hidden'),
             Input::make('user.name')
                 ->type('text')
                 ->max(255)
                 ->required()
                 ->horizontal()
-                ->title(__('Name'))
-                ->placeholder(__('Name')),
+                ->title(__('user.name'))
+                ->placeholder(__('user.name')),
 
             Input::make('user.email')
                 ->type('email')
                 ->required()
                 ->horizontal()
-                ->title(__('Email'))
-                ->placeholder(__('Email')),
+                ->title(__('user.email'))
+                ->placeholder(__('user.email')),
+			$passwordInput,
+			$passwordConfirm
         ];
     }
 }

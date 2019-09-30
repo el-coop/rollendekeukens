@@ -29,6 +29,7 @@ return [
     'settingsTab' => 'Site Settings',
     'settingsSaved' => 'Settings Saved.',
     'linkSaved' => 'Link Saved.',
-    'linkDeleted' => 'Link Deleted.'
+    'linkDeleted' => 'Link Deleted.',
+	'delete' => 'Delete'
     
 ];

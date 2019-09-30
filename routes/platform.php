@@ -26,7 +26,6 @@ use App\Orchid\Screens\User\UserListScreen;
 $this->router->screen('/main', PlatformScreen::class)->name('platform.main');
 
 // Users...
-$this->router->screen('users/{users}/edit', UserEditScreen::class)->name('platform.systems.users.edit');
 $this->router->screen('users', UserListScreen::class)->name('platform.systems.users');
 $this->router->screen('albums/{album}/edit', AlbumEditScreen::class)->name('platform.albums.edit');
 $this->router->screen('albums', AlbumListScreen::class)->name('platform.albums');
