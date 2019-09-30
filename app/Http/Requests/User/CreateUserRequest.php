@@ -4,6 +4,7 @@ namespace App\Http\Requests\User;
 
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Orchid\Support\Facades\Dashboard;
 
 class CreateUserRequest extends FormRequest {
 	/**
@@ -30,9 +31,17 @@ class CreateUserRequest extends FormRequest {
 
 	public function commit() {
 		$user = new User;
+		$permissions = collect();
+
+		Dashboard::getPermission()
+			->collapse()
+			->each(function ($item) use ($permissions) {
+				$permissions->put($item['slug'], true);
+			});
 		$user->email = $this->input('user.email');
 		$user->name = $this->input('user.name');
 		$user->password = bcrypt($this->input('password'));
+		$user->permissions = $permissions;
 		$user->save();
 	}
 }
