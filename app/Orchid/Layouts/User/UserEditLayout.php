@@ -20,13 +20,13 @@ class UserEditLayout extends Rows
     {
 		$passwordInput = Input::make('password')->type('password')
 			->title(__('passwords.password'))
-			->placeholder(__('password'))
+			->placeholder(__('passwords.password'))
 			->horizontal();
 		$passwordConfirm = Input::make('password_confirmation')->type('password')
 			->title(__('passwords.confirm'))
-			->placeholder(__('validation.confirmed'))
+			->placeholder(__('passwords.confirm'))
 			->horizontal();
-    	if (!$this->query['user']){
+    	if ($this->query['user'] && !$this->query['user']->id ){
     		$passwordInput->required();
     		$passwordConfirm->required();
 		}
@@ -37,15 +37,15 @@ class UserEditLayout extends Rows
                 ->max(255)
                 ->required()
                 ->horizontal()
-                ->title(__('Name'))
-                ->placeholder(__('Name')),
+                ->title(__('user.name'))
+                ->placeholder(__('user.name')),
 
             Input::make('user.email')
                 ->type('email')
                 ->required()
                 ->horizontal()
-                ->title(__('Email'))
-                ->placeholder(__('Email')),
+                ->title(__('user.email'))
+                ->placeholder(__('user.email')),
 			$passwordInput,
 			$passwordConfirm
         ];

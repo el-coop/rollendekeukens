@@ -9,6 +9,7 @@ use App\Http\Requests\User\DestroyUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Orchid\Fields\ModalButton;
 use Orchid\Screen\Layout;
+use Orchid\Screen\Layouts\Modal;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Platform\Models\User;
@@ -68,7 +69,7 @@ class UserListScreen extends Screen {
         return [
             UserListLayout::class,
 			Layout::rows([
-				ModalButton::make(__('add user'))
+				ModalButton::make(__('user.add'))
 					->modal('userModal')
 					->method('createUser')
 					->class('btn btn-primary mb-5')
@@ -76,7 +77,8 @@ class UserListScreen extends Screen {
 			]),
 			Layout::modal('userModal', [
 				UserEditLayout::class
-			])->title(__('panel.user'))->async('asyncGetUser'),
+			])->title(__('panel.user'))->async('asyncGetUser')
+			->size(Modal::SIZE_LG),
         ];
     }
     

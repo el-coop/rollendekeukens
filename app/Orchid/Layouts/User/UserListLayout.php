@@ -21,7 +21,7 @@ class UserListLayout extends Table
     public function columns(): array
     {
         return [
-            TD::set('name', __('Name'))
+            TD::set('name', __('user.name'))
                 ->sort()
                 ->filter(TD::FILTER_TEXT)
                 ->render(function (User $user) {
@@ -41,11 +41,11 @@ class UserListLayout extends Table
                               </div>
                             </div>";
                 })->loadModalAsync('userModal', 'updateUser', 'id', 'name'),
-            TD::set('email', __('Email'))
+            TD::set('email', __('user.email'))
                 ->loadModalAsync('userModal', 'updateUser', 'id', 'email')
                 ->filter(TD::FILTER_TEXT)
                 ->sort(),
-			TD::set('id', __('delete'))
+			TD::set('id', __('panel.delete'))
 				->render(function (User $user) {
 
 					$route = action('\App\Orchid\Screens\User\UserListScreen@handle', [
