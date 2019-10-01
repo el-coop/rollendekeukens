@@ -12,4 +12,8 @@ class Album extends Model {
 	public function entries() {
 		return $this->hasMany(AlbumEntry::class);
 	}
+    
+    public function getThumbnailLinkAttribute() {
+        return action('HomeController@albumThumbnail', ['album' => $this, 'time' => $this->updated_at->timestamp]);
+	}
 }
