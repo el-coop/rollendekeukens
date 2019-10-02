@@ -17,6 +17,7 @@ class CreateAlbumsTable extends Migration
             $table->bigIncrements('id');
             $table->string('thumbnail');
             $table->string('title');
+            $table->integer('order')->unsigned();
             $table->timestamps();
         });
     }

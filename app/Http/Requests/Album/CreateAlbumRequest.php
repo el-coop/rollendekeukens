@@ -31,6 +31,7 @@ class CreateAlbumRequest extends FormRequest {
 		$album = new Album;
 		$album->title = $this->input('album.title');
         $album->thumbnail = $this->file('album.thumbnail')->store('public/images');
+        $album->order = Album::count();
         
         $album->save();
 		return $album;

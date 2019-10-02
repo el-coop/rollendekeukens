@@ -27,6 +27,6 @@ class DeleteAlbumRequest extends FormRequest {
 	}
 
 	public function commit() {
-		return Album::find($this->route('album'))->delete();
+		return Album::find($this->route('method'))->delete();
 	}
 }
