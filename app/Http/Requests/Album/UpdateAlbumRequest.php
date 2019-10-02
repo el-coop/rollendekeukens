@@ -2,12 +2,14 @@
 
 namespace App\Http\Requests\Album;
 
+use App\Http\Requests\Traits\ProcessImage;
 use App\Models\Album;
 use Illuminate\Foundation\Http\FormRequest;
 use Storage;
 
 class UpdateAlbumRequest extends FormRequest {
-    /**
+    use ProcessImage;
+	/**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -36,7 +38,11 @@ class UpdateAlbumRequest extends FormRequest {
     public function commit() {
         if ($this->hasFile('album.thumbnail')) {
             Storage::delete($this->album->thumbnail);
-            $this->album->thumbnail = $this->file('album.thumbnail')->store('public/images');
+			$image = $this->file('album.thumbnail');
+
+			$path = 'public/images/' . $image->hashName();
+			$path = $this->processImage($image, $path);
+			$this->album->thumbnail = $path;
         }
         $this->album->title = $this->input('album.title');
         $this->album->save();

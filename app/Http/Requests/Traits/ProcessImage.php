@@ -15,7 +15,7 @@ trait ProcessImage {
 
 	private function processImage($image, $path){
 		$mime = $image->extension();
-		if ($mime != '.peg' || $mime != 'jpeg') {
+		if ($mime != 'jpeg') {
 			$path = str_replace($mime, 'jpeg', $path);
 		}
 		Image::make($image)->resize('600', null)->interlace()->save(storage_path('app/' . $path));
