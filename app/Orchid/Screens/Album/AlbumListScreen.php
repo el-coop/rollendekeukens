@@ -3,12 +3,15 @@
 namespace App\Orchid\Screens\Album;
 
 use Alert;
+use App\Http\Requests\Album\AlbumReorderRequest;
 use App\Http\Requests\Album\CreateAlbumRequest;
+use App\Http\Requests\Album\DeleteAlbumRequest;
 use App\Http\Requests\Album\UpdateAlbumRequest;
 use App\Models\Album;
 use App\Orchid\Fields\ModalButton;
 use App\Orchid\Layouts\Album\AlbumLayout;
 use App\Orchid\Layouts\Album\AlbumListLayout;
+use App\Orchid\Layouts\Album\ThumbnailGallery;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
@@ -36,7 +39,9 @@ class AlbumListScreen extends Screen {
      */
     public function query(): array {
         return [
-            'albums' => Album::paginate()
+            'albums' => Album::orderBy('order')->get()->each(function($item){
+                $item->src = $item->thumbnailLink;
+            })
         ];
     }
     
@@ -78,8 +83,9 @@ class AlbumListScreen extends Screen {
         $album = Album::find($request->input(0, 0));
         if (!$album) {
             $album = new Album;
+        } else {
+            $album->thumbnail = $album->thumbnailLink;
         }
-        $album->thumbnail = $album->thumbnailLink;
         return ['album' => $album];
     }
     
@@ -92,6 +98,17 @@ class AlbumListScreen extends Screen {
     public function update(UpdateAlbumRequest $request) {
         $request->commit();
         Alert::success('Album updated');
+        return back();
+    }
+    public function delete(DeleteAlbumRequest $request) {
+        $request->commit();
+        Alert::success('Album Deleted');
+        return back();
+    }
+    
+    public function reorder(AlbumReorderRequest $request) {
+        $request->commit();
+        Alert::success('Albums Reordered');
         return back();
     }
 }

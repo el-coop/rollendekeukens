@@ -7,7 +7,7 @@ use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Rows;
 
-class   AlbumLayout extends Rows {
+class AlbumLayout extends Rows {
     /**
      * Views.
      *

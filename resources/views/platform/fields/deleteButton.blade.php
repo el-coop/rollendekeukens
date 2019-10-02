@@ -6,7 +6,7 @@
       novalidate
 >
     @csrf
-    <button type="submit" formaction="{{ $route }}" data-novalidate="false" form="post-form" class="btn btn-danger" lang="">
+    <button type="submit" formaction="{{ $route }}" data-novalidate="false" form="delete-form" class="btn btn-danger" lang="">
         <i class='icon-trash'></i>
     </button>
 
