@@ -22,6 +22,7 @@ class CreateAlbumRequest extends FormRequest {
 	 */
 	public function rules() {
 		return [
+		    'album.thumbnail' => 'required|image',
 			'album.title' => 'required|string|unique:albums,title'
 		];
 	}
@@ -29,7 +30,9 @@ class CreateAlbumRequest extends FormRequest {
 	public function commit() {
 		$album = new Album;
 		$album->title = $this->input('album.title');
-		$album->save();
+        $album->thumbnail = $this->file('album.thumbnail')->store('public/images');
+        
+        $album->save();
 		return $album;
 	}
 }

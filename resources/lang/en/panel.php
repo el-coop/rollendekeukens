@@ -30,6 +30,10 @@ return [
     'settingsSaved' => 'Settings Saved.',
     'linkSaved' => 'Link Saved.',
     'linkDeleted' => 'Link Deleted.',
-	'delete' => 'Delete'
+	'delete' => 'Delete',
+    'albums' => 'Albums',
+    'site' => 'Site',
+    'thumbnail' => 'Thumbnail',
+    'albumCreate' => 'Album Details'
     
 ];

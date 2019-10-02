@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('logo', 'HomeController@logo');
+Route::get('thumbnail/{album}', 'HomeController@albumThumbnail');

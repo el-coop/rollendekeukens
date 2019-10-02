@@ -67,13 +67,13 @@ class PlatformScreen extends Screen {
      */
     public function commandBar(): array {
         return [
-            Link::make('Users')
+            Link::make(__('panel.users'))
                 ->href(action('\App\Orchid\Screens\User\UserListScreen@handle'))
                 ->icon('icon-user'),
-			Link::make('Albums')
+			Link::make(__('panel.albums'))
 				->href(action('\App\Orchid\Screens\Album\AlbumListScreen@handle'))
 				->icon('icon-picture'),
-            Link::make('Site')
+            Link::make(__('panel.site'))
                 ->href(env('APP_URL'))
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
@@ -106,7 +106,6 @@ class PlatformScreen extends Screen {
             Layout::modal('footerLinkModal', [
                 FooterLinkLayout::class
             ])->title(__('panel.linkModalTitle'))->async('asyncFooterLink'),
-            Layout::view('platform::partials.update')
         ];
     }
     
