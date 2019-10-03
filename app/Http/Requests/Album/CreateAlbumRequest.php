@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests\Album;
 
+use App\Http\Requests\Traits\ProcessImage;
 use App\Models\Album;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateAlbumRequest extends FormRequest {
+
+	use ProcessImage;
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -30,7 +33,11 @@ class CreateAlbumRequest extends FormRequest {
 	public function commit() {
 		$album = new Album;
 		$album->title = $this->input('album.title');
-        $album->thumbnail = $this->file('album.thumbnail')->store('public/images');
+		$image = $this->file('album.thumbnail');
+
+		$path = 'public/images/' . $image->hashName();
+		$path = $this->processImage($image, $path);
+        $album->thumbnail = $path;
         $album->order = Album::count();
         
         $album->save();
