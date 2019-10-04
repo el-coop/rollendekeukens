@@ -17,7 +17,8 @@ class CreateFooterLinksTable extends Migration
             $table->bigIncrements('id');
             $table->string('text');
             $table->string('url');
-            $table->timestamps();
+			$table->string('logo');
+			$table->timestamps();
         });
     }
 
