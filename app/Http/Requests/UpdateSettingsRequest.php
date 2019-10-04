@@ -2,13 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Traits\ProcessImage;
 use App\Models\SiteSetting;
 use Illuminate\Foundation\Http\FormRequest;
 use Storage;
 
 class UpdateSettingsRequest extends FormRequest {
-    
-    protected $settings = ['instagram', 'facebook', 'contact', 'links-title'];
+    use ProcessImage;
+    protected $settings = ['instagram', 'facebook', 'contact', 'links-title', 'display-album'];
     
     /**
      * Determine if the user is authorized to make this request.
@@ -31,6 +32,7 @@ class UpdateSettingsRequest extends FormRequest {
             'facebook' => 'nullable|string|url',
             'contact' => 'nullable|string',
             'links-title' => 'nullable|string',
+			'display-album' => 'nullable|integer|exists:albums,id'
         ];
     }
     
@@ -45,7 +47,10 @@ class UpdateSettingsRequest extends FormRequest {
             if($logo->value){
                 Storage::delete($logo->value);
             }
-            $logo->value = $this->file('logo')->store('public/images');
+            $image = $this->file('logo');
+			$path = 'public/images/' . $image->hashName();
+			$path = $this->processImage($image, $path);
+            $logo->value = $path;
             $logo->save();
         }
     }

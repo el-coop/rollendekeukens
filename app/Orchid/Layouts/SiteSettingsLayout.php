@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Layouts;
 
+use App\Models\Album;
 use App\Orchid\Fields\ImageUpload;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
@@ -9,6 +10,7 @@ use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TinyMCE;
 use Orchid\Screen\Layouts\Rows;
 
@@ -42,10 +44,14 @@ class SiteSettingsLayout extends Rows {
             Input::make('links-title')
                 ->type('text')
                 ->title(__('panel.footer-links-title')),
-            
+			Select::make('display-album')
+				->type('select')
+				->fromModel(Album::class, 'title')
+				->title(__('panel.displayAlbum')),
             Button::make(__('panel.update'))
                 ->method('store')
-                ->type(Button::PRIMARY),
+                ->type(Button::PRIMARY)
+
         ];
     }
 }

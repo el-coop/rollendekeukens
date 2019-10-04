@@ -2,11 +2,15 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Traits\ProcessImage;
 use App\Models\FooterLink;
 use Illuminate\Foundation\Http\FormRequest;
+use Storage;
+
 
 class UpdateFooterLinkRequest extends FormRequest {
-    /**
+    use ProcessImage;
+	/**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -26,6 +30,7 @@ class UpdateFooterLinkRequest extends FormRequest {
             'link.id' => 'nullable|exists:footer_links,id',
             'link.url' => 'required|string|url',
             'link.text' => 'required|string',
+			'link.logo' => 'required|image'
         ];
     }
     
@@ -34,8 +39,12 @@ class UpdateFooterLinkRequest extends FormRequest {
         $footerLink = new FooterLink;
         if (isset($link['id'])) {
             $footerLink = FooterLink::find($link['id']);
+			Storage::delete($footerLink->logo);
         }
-        
+        $image = $this->file('link.logo');
+		$path = 'public/images/' . $image->hashName();
+		$path = $this->processImage($image, $path);
+		$footerLink->logo = $path;
         $footerLink->url = $link['url'];
         $footerLink->text = $link['text'];
         $footerLink->save();
