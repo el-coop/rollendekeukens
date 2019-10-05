@@ -1,6 +1,9 @@
 <template>
-    <draggable v-model="entries">
+    <draggable v-model="entries" draggable=".thumbnail-gallery__draggable">
         <slot :entries="entries"/>
+        <div slot="header">
+            <slot name="header"/>
+        </div>
     </draggable>
 </template>
 

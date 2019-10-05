@@ -32,8 +32,10 @@ return [
     'linkDeleted' => 'Link Deleted.',
 	'delete' => 'Delete',
     'albums' => 'Albums',
+    'album' => 'Album',
     'site' => 'Site',
     'thumbnail' => 'Thumbnail',
-    'albumCreate' => 'Album Details'
+    'albumCreate' => 'Album Details',
+    'entryCreate' => 'Entry Details'
     
 ];

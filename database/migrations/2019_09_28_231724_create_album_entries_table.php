@@ -16,6 +16,7 @@ class CreateAlbumEntriesTable extends Migration {
             $table->unsignedBigInteger('album_id');
             $table->unsignedBigInteger('entry_id');
             $table->string('entry_type');
+            $table->string('image');
             $table->integer('order')->unsigned();
             $table->timestamps();
             
