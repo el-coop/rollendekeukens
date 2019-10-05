@@ -56,7 +56,8 @@ class PlatformScreen extends Screen {
             'contact' => $settings->get('contact', ''),
             'links-title' => $settings->get('links-title', ''),
             'logo' => $settings->get('logo', false) ? action('HomeController@logo') : '',
-            'links' => $links
+            'links' => $links,
+			'display-album' => $settings->get('display-album', 1)
         ];
     }
     

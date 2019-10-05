@@ -36,6 +36,7 @@ return [
     'site' => 'Site',
     'thumbnail' => 'Thumbnail',
     'albumCreate' => 'Album Details',
-    'entryCreate' => 'Entry Details'
+    'entryCreate' => 'Entry Details',
+	'displayAlbum' => 'Displayed Album'
     
 ];
