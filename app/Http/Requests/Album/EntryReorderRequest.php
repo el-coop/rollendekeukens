@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Album;
 
-use App\Models\Album;
+use App\Models\AlbumEntry;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AlbumReorderRequest extends FormRequest {
+class EntryReorderRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,6 +13,7 @@ class AlbumReorderRequest extends FormRequest {
      */
     public function authorize() {
         return $this->user();
+        
     }
     
     /**
@@ -29,7 +30,7 @@ class AlbumReorderRequest extends FormRequest {
     
     public function commit() {
         foreach ($this->input('order') as $order => $id) {
-            $album = Album::find($id);
+            $album = AlbumEntry::find($id);
             $album->order = $order;
             $album->save();
         }

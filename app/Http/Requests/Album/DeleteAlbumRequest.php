@@ -4,6 +4,7 @@ namespace App\Http\Requests\Album;
 
 use App\Models\Album;
 use Illuminate\Foundation\Http\FormRequest;
+use Storage;
 
 class DeleteAlbumRequest extends FormRequest {
 	/**
@@ -27,6 +28,8 @@ class DeleteAlbumRequest extends FormRequest {
 	}
 
 	public function commit() {
-		return Album::find($this->route('method'))->delete();
+	    $album = Album::find($this->route('method'));
+	    Storage::delete($album->thumbnail);
+		return $album->delete();
 	}
 }

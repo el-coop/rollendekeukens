@@ -1,18 +1,17 @@
 import Vue from 'vue';
-import dragNDrop from "./dragNDrop";
 import TurbolinksAdapter from 'vue-turbolinks';
 
-Vue.use(TurbolinksAdapter);
+import dragNDrop from "./dragNDrop";
 
+Vue.use(TurbolinksAdapter);
 
 Vue.component('DragNDrop', dragNDrop);
 
 document.addEventListener('turbolinks:load', () => {
-
-    const element = document.getElementById("vue");
-    if (element != null) {
+    const element = document.getElementsByClassName("vue");
+    if (element.length) {
         new Vue({
-            el: '#vue',
+            el: '.vue',
         });
     }
 });

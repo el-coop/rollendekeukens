@@ -40,7 +40,7 @@ class AlbumListScreen extends Screen {
     public function query(): array {
         return [
             'albums' => Album::orderBy('order')->get()->each(function($item){
-                $item->src = $item->thumbnailLink;
+                $item->src = $item->preview;
             })
         ];
     }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests\Album;
 
-use App\Models\Album;
+use App\Models\AlbumEntry;
 use Illuminate\Foundation\Http\FormRequest;
+use Storage;
 
-class AlbumReorderRequest extends FormRequest {
+class DeleteEntryRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -22,16 +23,16 @@ class AlbumReorderRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'order' => 'required|array',
-            'order.*' => 'integer'
+            //
         ];
     }
     
     public function commit() {
-        foreach ($this->input('order') as $order => $id) {
-            $album = Album::find($id);
-            $album->order = $order;
-            $album->save();
+        $entry = AlbumEntry::find($this->route('method'));
+        if (Storage::exists($entry->image)) {
+            Storage::delete($entry->image);
         }
+        $entry->entry()->delete();
+        return $entry->delete();
     }
 }

@@ -5,7 +5,6 @@ namespace App\Orchid\Fields;
 
 
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Field;
 
 class ModalButton extends Button {
     /**
