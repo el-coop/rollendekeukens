@@ -91,17 +91,20 @@ class AlbumListScreen extends Screen {
     
     public function create(CreateAlbumRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::success('Album created');
         return back();
     }
     
     public function update(UpdateAlbumRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::success('Album updated');
         return back();
     }
     public function delete(DeleteAlbumRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::success('Album Deleted');
         return back();
     }

@@ -8,6 +8,7 @@ use Alert;
 use App\Http\Requests\DestroyFooterLinkRequest;
 use App\Http\Requests\UpdateFooterLinkRequest;
 use App\Http\Requests\UpdateSettingsRequest;
+use App\Models\Album;
 use App\Models\FooterLink;
 use App\Models\SiteSetting;
 use App\Orchid\Fields\ModalButton;
@@ -57,7 +58,7 @@ class PlatformScreen extends Screen {
             'links-title' => $settings->get('links-title', ''),
             'logo' => $settings->get('logo', false) ? action('HomeController@logo') : '',
             'links' => $links,
-			'display-album' => $settings->get('display-album', 1)
+            'display-album' => $settings->get('display-album', 1),
         ];
     }
     
@@ -71,14 +72,14 @@ class PlatformScreen extends Screen {
             Link::make(__('panel.users'))
                 ->href(action('\App\Orchid\Screens\User\UserListScreen@handle'))
                 ->icon('icon-user'),
-			Link::make(__('panel.albums'))
-				->href(action('\App\Orchid\Screens\Album\AlbumListScreen@handle'))
-				->icon('icon-picture'),
+            Link::make(__('panel.albums'))
+                ->href(action('\App\Orchid\Screens\Album\AlbumListScreen@handle'))
+                ->icon('icon-picture'),
             Link::make(__('panel.site'))
                 ->href(env('APP_URL'))
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
-
+        
         ];
     }
     

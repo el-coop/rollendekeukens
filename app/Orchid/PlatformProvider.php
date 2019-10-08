@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid;
 
 use Orchid\Platform\Dashboard;
+use Orchid\Platform\Http\Composers\NotificationsComposer;
 use Orchid\Platform\ItemPermission;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -21,7 +22,7 @@ class PlatformProvider extends ServiceProvider
     public function boot(Dashboard $dashboard)
     {
         View::composer('platform::dashboard', MainMenuComposer::class);
-
+        
         $dashboard
             //->registerPermissions($this->registerPermissionsMain())
             ->registerPermissions($this->registerPermissionsSystems());
