@@ -13,7 +13,8 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "orchid/platform": "^6.1"
+        "orchid/platform": "^6.1",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

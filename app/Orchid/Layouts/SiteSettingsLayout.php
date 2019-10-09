@@ -41,12 +41,9 @@ class SiteSettingsLayout extends Rows {
                 ->title(__('panel.footer-contact'))
                 ->theme('inlite'),
             
-            Input::make('links-title')
-                ->type('text')
-                ->title(__('panel.footer-links-title')),
 			Select::make('display-album')
 				->type('select')
-				->fromModel(Album::class, 'title')
+                ->options(Album::select('id','title')->get()->pluck('title','id'))
 				->title(__('panel.displayAlbum')),
             Button::make(__('panel.update'))
                 ->method('store')

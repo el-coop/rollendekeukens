@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Cacheable;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 
 class Album extends Model {
     
-    use AsSource;
+    use AsSource, Cacheable;
     
     public function entries() {
         return $this->hasMany(AlbumEntry::class);
