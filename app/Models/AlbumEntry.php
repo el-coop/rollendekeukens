@@ -8,6 +8,7 @@ use Orchid\Screen\AsSource;
 class AlbumEntry extends Model {
     
     use AsSource;
+    protected $appends = ['imageLink', 'type'];
     
     public function album() {
         return $this->belongsTo(Album::class);
@@ -26,5 +27,9 @@ class AlbumEntry extends Model {
             return $this->entry->preview;
         }
         return "<img src='{$this->imageLink}' class='thumbnail-gallery__entry-image'>";
+    }
+
+	public function getTypeAttribute() {
+		return str_replace("Album", "",class_basename($this->entry));
     }
 }

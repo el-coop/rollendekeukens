@@ -20,4 +20,10 @@ class HomeController extends Controller {
     public function entryImage(AlbumEntry $entry) {
         return Storage::response($entry->image);
     }
+
+	public function home() {
+		$albums = Album::all();
+		$entries = Album::find(1)->entries;
+		return view('site', compact( 'albums', 'entries'));
+    }
 }
