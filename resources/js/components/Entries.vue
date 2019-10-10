@@ -22,6 +22,5 @@
     .entry {
         width: 293px!important;
         height: 293px!important;
-        padding: 0.01rem;
     }
 </style>
