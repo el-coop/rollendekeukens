@@ -1,8 +1,8 @@
 // Variables
 @import 'variables';
-
 // Bulma
 @import "~bulma";
-
 // Site
+@import "site/layout";
 @import "site/header";
+@import "site/navbar";

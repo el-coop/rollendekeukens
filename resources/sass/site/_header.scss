@@ -1,12 +1,15 @@
-.navbar-start > a {
-  color: darkred;
-  font-size: medium;
+.has-text-red {
+    color: $red;
+
+    &:hover {
+        color: lighten($red, 10%);
+    }
 }
+
+
 
 .site-logo {
     max-width: 600px;
-}
-
-.logo-container {
-  justify-content: center;
+    display: block;
+    margin: 0.5em auto;
 }
