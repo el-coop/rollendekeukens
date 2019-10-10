@@ -103,23 +103,27 @@ class AlbumEditScreen extends Screen {
     
     public function save(CreateEntryRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::info(__('Entry saved.'));
         return redirect()->back();
     }
     
     public function update(UpdateEntryRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::success('Entry updated.');
         return back();
     }
     
     public function delete(DeleteEntryRequest $request) {
         $request->commit();
+        Album::flushCache();
         return redirect()->back();
     }
     
     public function reorder(EntryReorderRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::success('Albums Reordered');
         return back();
     }
