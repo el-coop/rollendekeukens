@@ -1,30 +1,27 @@
 <template>
     <div class="columns is-multiline">
-        <component v-for="entry in entries" :is="entry.type + '-entry'" :key="entry.id" :entry="entry">
-
-        </component>
+        <figure v-for="entry in entries" class="image column is-one-third">
+            <img class="entry" :src="entry.imageLink">
+        </figure>
     </div>
 </template>
 
 <script>
-    import VideoEntry from "./VideoEntry";
-    import TextEntry from "./TextEntry";
-    import PhotoEntry from "./PhotoEntry";
     export default {
         name: "Entries",
-        components: {
-          VideoEntry,
-          TextEntry,
-          PhotoEntry
-        },
         props: {
             entries: {
                 type: Array,
+                required: true
             }
         }
     }
 </script>
 
 <style scoped>
-
+    .entry {
+        width: 293px!important;
+        height: 293px!important;
+        padding: 0.01rem;
+    }
 </style>
