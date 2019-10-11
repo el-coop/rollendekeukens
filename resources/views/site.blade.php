@@ -4,5 +4,6 @@
         @include('partials.header')
         <albums :albums="{{$albums}}"></albums>
         <entries :entries="{{$entries}}"></entries>
+        @include('partials.footer');
     </div>
 @endsection

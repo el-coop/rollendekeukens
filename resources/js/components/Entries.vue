@@ -1,8 +1,11 @@
 <template>
-    <div class="columns is-multiline">
-        <figure v-for="entry in entries" class="image column is-one-third">
-            <img class="entry" :src="entry.imageLink">
-        </figure>
+    <div class="columns is-mobile is-multiline is-gapless">
+        <hr>
+        <div v-for="entry in entries" class="column is-one-third">
+            <figure  class="image ">
+                <img class="entry" :src="entry.imageLink">
+            </figure>
+        </div>
     </div>
 </template>
 
@@ -19,8 +22,5 @@
 </script>
 
 <style scoped>
-    .entry {
-        width: 293px!important;
-        height: 293px!important;
-    }
+
 </style>

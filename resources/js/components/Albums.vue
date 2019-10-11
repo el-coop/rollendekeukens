@@ -1,7 +1,7 @@
 <template>
     <div class="section is-flex">
         <div v-for="album in albums">
-            <figure class="image is-87x87">
+            <figure class="image is-140x140">
                 <img class="album" :src="album.thumbnailLink">
             </figure>
         </div>
@@ -28,9 +28,13 @@
         padding: 0.18rem;
         border: 1px solid darkred;
     }
-    .image.is-87x87 {
+    .image.is-140x140 {
         height: 140px;
         width: 140px;
         padding: 1rem;
+    }
+
+    .section {
+        padding-left: 0rem!important;
     }
 </style>
