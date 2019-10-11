@@ -1,3 +1,18 @@
 .container {
     max-width: 975px !important;
 }
+
+.entry {
+    @include from($tablet){
+        width: 293px !important;
+        height: 293px !important;
+        padding: 0.3rem;
+
+    }
+    @include until($tablet){
+        width: 156px !important;
+        height: 156px !important;
+        padding: 0.1rem;
+
+    }
+}
