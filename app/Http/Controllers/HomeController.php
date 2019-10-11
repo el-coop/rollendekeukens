@@ -28,10 +28,10 @@ class HomeController extends Controller {
 	}
 
 	public function home() {
-		$footerLinks = FooterLink::all();
+		$footerLinks = FooterLink::getCached();
 		$settings = SiteSetting::select('key', 'value')->getCached()->pluck('value', 'key');
-		$albums = Album::all();
-		$entries = Album::find(1)->entries;
+		$albums = Album::getCached();
+		$entries = AlbumEntry::where('album_id', 1)->getCached();
 		return view('site', compact('settings', 'albums', 'entries', 'footerLinks'));
 	}
 }

@@ -1,8 +1,8 @@
 <template>
-    <div class="columns is-mobile is-multiline is-gapless">
+    <div class="entries">
         <hr>
-        <div v-for="entry in entries" class="column is-one-third">
-            <figure  class="image ">
+        <div v-for="entry in entries">
+            <figure class="image">
                 <img class="entry" :src="entry.imageLink">
             </figure>
         </div>
@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: "Entries",
+        name: "AlbumEntries",
         props: {
             entries: {
                 type: Array,
@@ -22,5 +22,9 @@
 </script>
 
 <style scoped>
-
+.entries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 </style>
