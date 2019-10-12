@@ -29,7 +29,6 @@ class UpdateFooterLinkRequest extends FormRequest {
             'link' => 'array',
             'link.id' => 'nullable|exists:footer_links,id',
             'link.url' => 'required|string|url',
-            'link.text' => 'required|string',
 			'link.logo' => 'required|image'
         ];
     }
@@ -46,7 +45,6 @@ class UpdateFooterLinkRequest extends FormRequest {
 		$path = $this->processImage($image, $path);
 		$footerLink->logo = $path;
         $footerLink->url = $link['url'];
-        $footerLink->text = $link['text'];
         $footerLink->save();
     }
 }

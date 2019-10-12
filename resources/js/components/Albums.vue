@@ -1,40 +1,41 @@
 <template>
-    <div class="section is-flex">
-        <div v-for="album in albums">
-            <figure class="image is-140x140">
-                <img class="album" :src="album.thumbnailLink">
+    <carousel :entries="albums">
+        <template #default="{entry, index}">
+            <figure class="image album">
+                <img class="album-image" :src="entry.thumbnailLink">
             </figure>
-        </div>
-    </div>
+            <div class="has-text-centered is-size-7" v-text="entry.title"></div>
+        </template>
+    </carousel>
 </template>
 
 <script>
-    export default {
-        name: "Albums",
-        props: {
-            albums: {
-                type: Array,
-                required: true
-            }
-        }
-    }
+	export default {
+		name: "Albums",
+		props: {
+			albums: {
+				type: Array,
+				required: true
+			}
+		},
+	}
 </script>
 
 <style scoped>
-    .album {
+    .album-image {
         border-radius: 50%;
         width: 100%;
         height: 100%;
         padding: 0.18rem;
         border: 1px solid darkred;
-    }
-    .image.is-140x140 {
-        height: 140px;
-        width: 140px;
-        padding: 1rem;
+        object-fit: cover;
+        object-position: center center;
     }
 
-    .section {
-        padding-left: 0rem!important;
+    .album {
+        padding: 15px;
+        height: 120px;
+        width: 120px;
     }
+
 </style>
