@@ -111,6 +111,7 @@ class AlbumListScreen extends Screen {
     
     public function reorder(AlbumReorderRequest $request) {
         $request->commit();
+        Album::flushCache();
         Alert::success('Albums Reordered');
         return back();
     }

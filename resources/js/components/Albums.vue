@@ -21,7 +21,12 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    @import "~bulma/sass/utilities/initial-variables";
+    @import "~bulma/sass/utilities/functions.sass";
+    @import "~bulma/sass/utilities/derived-variables";
+    @import "~bulma/sass/utilities/mixins";
+
     .album-image {
         border-radius: 50%;
         width: 100%;
@@ -33,9 +38,13 @@
     }
 
     .album {
-        padding: 15px;
-        height: 120px;
-        width: 120px;
+        padding: 8px;
+        height: 90px;
+        width: 90px;
+        @include from($tablet) {
+            height: 120px;
+            width: 120px;
+        }
     }
 
 </style>

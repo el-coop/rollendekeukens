@@ -9,6 +9,7 @@ use Orchid\Screen\AsSource;
 class AlbumEntry extends Model {
     use Cacheable;
     use AsSource;
+    protected $with = ['entry'];
     protected $appends = ['imageLink', 'type'];
     
     public function album() {
