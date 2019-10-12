@@ -1,10 +1,10 @@
 <template>
-    <carousel :entries="demoEntries">
+    <carousel :entries="albums">
         <template #default="{entry, index}">
             <figure class="image album">
                 <img class="album-image" :src="entry.thumbnailLink">
             </figure>
-            <div class="has-text-centered is-size-7" v-text="index"></div>
+            <div class="has-text-centered is-size-7" v-text="entry.title"></div>
         </template>
     </carousel>
 </template>
@@ -18,18 +18,6 @@
 				required: true
 			}
 		},
-
-		data() {
-			const demoEntries = [];
-
-			for (let i = 0; i < 20; i++) {
-				demoEntries.push(this.albums[0])
-			}
-
-			return {
-				demoEntries
-			}
-		}
 	}
 </script>
 

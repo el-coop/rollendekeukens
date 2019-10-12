@@ -47,16 +47,12 @@
 				const pageWidth = onPage * entryWidth;
 				const pages = Math.ceil(this.maxScroll / pageWidth);
 				let currentPage = Math.ceil(this.currentScroll / clientWidth);
-				console.log(pages);
+
 				if (this.currentScroll === this.maxScroll) {
-					console.log('fixing', currentPage, pages);
 					currentPage = pages;
 				}
-				console.log({
-                    currentPage
-                });
+
 				this.currentScroll = Math.floor(onPage) * entryWidth * (currentPage + amount);
-				console.log(onPage, entryWidth, Math.floor(onPage) * entryWidth, this.currentScroll);
 
 				if (this.currentScroll < 0) {
 					this.currentScroll = 0;
