@@ -3,7 +3,7 @@
         <hr>
         <div v-for="entry in entries">
             <figure class="image">
-                <img class="entry" :src="entry.imageLink">
+                <img @click="open(entry)" class="entry" :src="entry.imageLink">
             </figure>
         </div>
     </div>
@@ -16,6 +16,12 @@
             entries: {
                 type: Array,
                 required: true
+            }
+        },
+        methods: {
+            open(entry){
+                entry.component = "album-" + entry.type;
+                this.$emit('open-entry', entry);
             }
         }
     }

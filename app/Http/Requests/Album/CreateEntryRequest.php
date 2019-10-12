@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Album;
 
 use App\Http\Requests\Traits\ProcessImage;
+use App\Http\Requests\Traits\ProcessYoutubeLink;
 use App\Models\Album;
 use App\Models\AlbumEntry;
 use App\Models\AlbumPhoto;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateEntryRequest extends FormRequest {
     use ProcessImage;
+    use ProcessYoutubeLink;
     
     /**
      * Determine if the user is authorized to make this request.
@@ -54,7 +56,8 @@ class CreateEntryRequest extends FormRequest {
                 break;
             case 'Video':
                 $entryExtended = new AlbumVideo;
-                $entryExtended->url = $this->input('entry.video');
+                $url = $this->convertYoutube($this->input('entry.video'));
+                $entryExtended->url = $url;
                 break;
             case 'Text':
                 $entryExtended = new AlbumText;
