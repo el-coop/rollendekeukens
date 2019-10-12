@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Album;
 
 use App\Http\Requests\Traits\ProcessImage;
+use App\Http\Requests\Traits\ProcessYoutubeLink;
 use App\Models\AlbumEntry;
 use App\Models\AlbumPhoto;
 use App\Models\AlbumText;
@@ -12,6 +13,7 @@ use Storage;
 
 class UpdateEntryRequest extends FormRequest {
     use ProcessImage;
+    use ProcessYoutubeLink;
     private $entry;
     
     /**
@@ -58,8 +60,9 @@ class UpdateEntryRequest extends FormRequest {
                 $entryExtended = new AlbumPhoto;
                 break;
             case 'Video':
-                $entryExtended = new AlbumVideo;
-                $entryExtended->url = $this->input('entry.video');
+				$entryExtended = new AlbumVideo;
+				$url = $this->convertYoutube($this->input('entry.video'));
+				$entryExtended->url = $url;
                 break;
             case 'Text':
                 $entryExtended = new AlbumText;
