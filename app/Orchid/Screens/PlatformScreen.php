@@ -124,19 +124,21 @@ class PlatformScreen extends Screen {
     
     public function saveLink(UpdateFooterLinkRequest $request) {
         $request->commit();
+        FooterLink::flushCache();
         Alert::success(__('panel.linkSaved'));
         return back();
     }
     
     public function deleteLink($link, DestroyFooterLinkRequest $request) {
         $request->commit();
-        
+        FooterLink::flushCache();
         Alert::info(__('panel.linkDeleted'));
         return back();
     }
     
     public function store(UpdateSettingsRequest $request) {
         $request->commit();
+        FooterLink::flushCache();
         Alert::success(__('panel.settingsSaved'));
         return back();
     }

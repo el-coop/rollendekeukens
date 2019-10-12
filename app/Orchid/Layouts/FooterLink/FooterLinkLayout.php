@@ -19,12 +19,6 @@ class FooterLinkLayout extends Rows {
                 ->type('hidden'),
 			ImageUpload::make('link.logo')
 				->title(__('panel.logo')),
-            Input::make('link.text')
-                ->type('text')
-                ->max(255)
-                ->required()
-                ->horizontal()
-                ->title(__('panel.text')),
 
             Input::make('link.url')
                 ->type('url')

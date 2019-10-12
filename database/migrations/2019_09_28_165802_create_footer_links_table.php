@@ -15,7 +15,6 @@ class CreateFooterLinksTable extends Migration
     {
         Schema::create('footer_links', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('text');
             $table->string('url');
 			$table->string('logo');
 			$table->timestamps();
