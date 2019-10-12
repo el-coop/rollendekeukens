@@ -138,7 +138,7 @@ class PlatformScreen extends Screen {
     
     public function store(UpdateSettingsRequest $request) {
         $request->commit();
-        FooterLink::flushCache();
+        SiteSetting::flushCache();
         Alert::success(__('panel.settingsSaved'));
         return back();
     }
