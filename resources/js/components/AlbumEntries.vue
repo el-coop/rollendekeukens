@@ -28,9 +28,5 @@
 </script>
 
 <style scoped>
-.entries {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
+
 </style>

@@ -6,7 +6,8 @@
             @include('partials.header')
             <albums :albums="{{$albums->sortBy('order')->values()}}"></albums>
             <album-entries @open-entry="loadModalData"
-                           :entries="{{$entries->sortBy('order')->values()}}"></album-entries>
+                           :entries="{{$displayEntries->sortBy('order')->values()}}"></album-entries>
+            @include('partials.bottomAlbum')
             @include('partials.footer')
         </div>
     </div>
