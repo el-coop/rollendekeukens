@@ -1,11 +1,14 @@
 <template>
-    <carousel :entries="entries">
-        <template #default="{entry, index}">
-            <figure class="image album">
-                <img @click="open(entry)" class="album-image" :src="entry.imageLink">
-            </figure>
-        </template>
-    </carousel>
+        <carousel :entries="entries">
+            <template #default="{entry, index}">
+                <div class="entries__entry" @click="open(entry)">
+                    <figure class="image is-square" v-if="entry.image">
+                        <img class="entries__entry-image" :src="entry.imageLink">
+                    </figure>
+                    <div class="entries__entry-content" v-html="entry.entry.text" v-else/>
+                </div>
+            </template>
+        </carousel>
 </template>
 
 <script>
@@ -24,32 +27,9 @@
         },
         methods: {
             open(entry) {
-                entry.component = "album-" + entry.type;
+                entry.component = "Album" + entry.type;
                 this.$emit('open-entry', entry);
             }
         }
     }
 </script>
-<style scoped lang="scss">
-    @import "~bulma/sass/utilities/initial-variables";
-    @import "~bulma/sass/utilities/functions.sass";
-    @import "~bulma/sass/utilities/derived-variables";
-    @import "~bulma/sass/utilities/mixins";
-
-    .album-image {
-        width: 100%;
-        height: 100%;
-        padding: 0.18rem;
-        object-fit: cover;
-        object-position: center center;
-    }
-
-    .album {
-        height: 156px;
-        width: 156px;
-        @include from($tablet) {
-            height: 293px;
-            width: 293px;
-        }
-    }
-</style>
