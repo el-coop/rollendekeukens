@@ -1,0 +1,25 @@
+.modal-carousel {
+    &__thumbnail {
+        background-color: white;
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        margin-right: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+
+        &-image-wrapper {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        &-image {
+            height: 100% !important;
+            width: 100% !important;
+            object-fit: cover;
+            object-position: center center;
+            cursor: pointer;
+        }
+    }
+}
+

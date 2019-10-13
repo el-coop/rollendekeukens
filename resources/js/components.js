@@ -1,5 +1,11 @@
-Vue.component('carousel', require('./components/Carousel').default);
-Vue.component('albums', require('./components/Albums').default);
-Vue.component('album-entries', require('./components/AlbumEntries').default);
-Vue.component('modal', require('./components/Modal').default);
-Vue.component('bottom-album', require('./components/BottomAlbum').default);
+Vue.component('Carousel', require('./components/Carousel').default);
+Vue.component('Albums', require('./components/Albums').default);
+Vue.component('AlbumEntries', require('./components/AlbumEntries').default);
+Vue.component('Modal', require('./components/Modal').default);
+Vue.component('AlbumPhoto', require('./components/AlbumPhoto').default);
+Vue.component('AlbumVideo', require('./components/AlbumVideo').default);
+Vue.component('AlbumText', require('./components/AlbumText').default);
+Vue.component('AlbumPhotos', require('./components/AlbumPhotos').default);
+Vue.component('BottomAlbum', require('./components/BottomAlbum').default);
+
+

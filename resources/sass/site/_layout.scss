@@ -2,27 +2,89 @@
     max-width: 975px !important;
 }
 
-.entry {
-    @include from($tablet){
-        width: 293px !important;
-        height: 293px !important;
-        padding: 0.3rem;
-
-    }
-    @include until($tablet){
-        width: 156px !important;
-        height: 156px !important;
-        padding: 0.1rem;
-
-    }
-}
-
 .entries {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+
+    @include from($tablet) {
+        margin: 0;
+    }
+
+    &__entry {
+        cursor: pointer;
+        flex: 1 0 31%;
+        margin: 0 0.1rem 0.15rem;
+
+        @include from($tablet) {
+            max-width: 293px !important;
+            margin: 0 0.35rem 0.5rem;
+
+        }
+
+        &-image {
+            object-fit: cover;
+            object-position: center center;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        &-content {
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            padding: 0.3rem;
+
+            &:after {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                content: 'Read More';
+                background-color: $red;
+                color: white;
+                text-align: center;
+                padding: 0.5rem;
+            }
+        }
+    }
 }
 
-.pt-1 {
-    padding-top: 2rem;
+
+.album {
+    padding: 8px;
+    height: 90px;
+    width: 90px;
+    @include from($tablet) {
+        height: 120px;
+        width: 120px;
+    }
+
+    &-image {
+        border-radius: 50%;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0.18rem;
+        border: 1px solid $red;
+        object-fit: cover;
+        object-position: center center;
+        cursor: pointer;
+    }
+}
+
+
+.is-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.5;
+
+    &:after {
+        @include loader;
+        position: absolute;
+        top: calc(50% - 2.5em);
+        left: calc(50% - 2.5em);
+        width: 5em;
+        height: 5em;
+        border-width: 0.25em;
+    }
 }
