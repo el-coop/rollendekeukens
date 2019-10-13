@@ -15,15 +15,18 @@ class HomeController extends Controller {
         return Storage::response($logo->value);
     }
     
-    public function albumThumbnail(Album $album) {
+    public function albumThumbnail($album) {
+        $album = Album::where('id', $album)->firstCached();
         return Storage::response($album->thumbnail);
     }
     
-    public function entryImage(AlbumEntry $entry) {
+    public function entryImage($entry) {
+        $entry = AlbumEntry::where('id', $entry)->firstCached();
         return Storage::response($entry->image);
     }
     
-    public function footerLinkImage(FooterLink $footerLink) {
+    public function footerLinkImage($footerLink) {
+        $footerLink = FooterLink::where('id', $footerLink)->firstCached();
         return Storage::response($footerLink->logo);
     }
     

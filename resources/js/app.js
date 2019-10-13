@@ -6,10 +6,10 @@
 
 require('./bootstrap');
 window.Vue = require('vue');
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faChevronRight, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram, faFacebook} from '@fortawesome/free-brands-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 require('./components');
 
@@ -33,29 +33,11 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import AlbumPhoto from './components/AlbumPhoto';
-import AlbumVideo from './components/AlbumVideo';
-import AlbumText from './components/AlbumText';
-
 const app = new Vue({
     el: '#app',
-    components: {
-        AlbumPhoto,
-        AlbumVideo,
-        AlbumText
-    },
     data() {
         return {
             modalData: null
         }
     },
-    methods: {
-        loadModalData(modalData) {
-            this.modalData = modalData;
-
-        },
-        emptyModal() {
-            this.modalData = null;
-        }
-    }
 });
