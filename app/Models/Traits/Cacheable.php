@@ -5,11 +5,13 @@ namespace App\Models\Traits;
 
 
 use Cache;
+use Illuminate\Support\Str;
 
 trait Cacheable {
     public function scopeGetCached($query) {
         try {
-            return Cache::tags([static::class])->rememberForever($query->toSql(), function () use ($query) {
+            $key = Str::replaceArray('?', $query->getBindings(), $query->toSql());
+            return Cache::tags([static::class])->rememberForever($key, function () use ($query) {
                 return $query->get();
             });
         } catch (\Exception $exception) {
@@ -19,7 +21,8 @@ trait Cacheable {
     
     public function scopeFirstCached($query) {
         try {
-            return Cache::tags([static::class])->rememberForever("{$query->toSql()}_first", function () use ($query) {
+            $key = Str::replaceArray('?', $query->getBindings(), $query->toSql());
+            return Cache::tags([static::class])->rememberForever("{$key}_first", function () use ($query) {
                 return $query->first();
             });
         } catch (\Exception $exception) {
