@@ -1,7 +1,18 @@
 .footer-links {
-  display: flex;
-  justify-content: center;
-  &__item {
-    margin: $gap;
-  }
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include from($tablet) {
+        justify-content: center;
+    }
+
+
+    &__item {
+        width: 96px;
+
+        @include from($tablet) {
+            margin: $gap;
+        }
+    }
 }

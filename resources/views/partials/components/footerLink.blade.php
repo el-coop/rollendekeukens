@@ -1,7 +1,5 @@
-<div class="footer-links__item">
-    <a href="{{$footerLink->url}}">
-        <figure class="image is-96x96">
-            <img src="{{action('HomeController@footerLinkImage', $footerLink)}}">
-        </figure>
-    </a>
-</div>
+<a href="{{$footerLink->url}}" class="footer-links__item">
+    <figure class="image is-square">
+        <img src="{{action('HomeController@footerLinkImage', $footerLink)}}">
+    </figure>
+</a>

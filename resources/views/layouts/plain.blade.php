@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="dns-prefetch" href="//www.youtube.com">
 
-    <title>@yield('title') | {{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
