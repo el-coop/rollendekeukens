@@ -22,12 +22,12 @@ class AlbumLayout extends Rows {
                 ->required()
                 ->max(255)
                 ->horizontal()
-                ->title(__('title-en')),
+                ->title(__('panel.title-en')),
 			Input::make('album.title_nl')->type('text')
 				->required()
 				->max(255)
 				->horizontal()
-				->title(__('title-nl'))
+				->title(__('panel.title-nl'))
         ];
     }
 }

@@ -14,12 +14,15 @@ return [
     'edit' => 'Edit',
     'instagram' => 'Instagram Address',
     'facebook' => 'Facebook Address',
-    'footer-contact' => 'Contact Text',
-    'footer-links-title' => 'Footer Links Title',
+    'footer-contact-en' => 'Contact Text EN',
+	'footer-contact-nl' => 'Contact Text NL',
+	'footer-links-title' => 'Footer Links Title',
     'footer-links' => 'Footer Links',
     'update' => 'Update',
     'text' => 'Text',
-    'url' => 'URL',
+	'text-en' => 'Text EN',
+	'text-nl' => 'Text NL',
+	'url' => 'URL',
     'logo' => 'Logo',
     'change' => 'Change',
     'select-image' => 'Select Image',
@@ -38,6 +41,8 @@ return [
     'albumCreate' => 'Album Details',
     'entryCreate' => 'Entry Details',
 	'displayAlbum' => 'Displayed Album',
-	'bottomAlbum' => 'Bottom Album'
+	'bottomAlbum' => 'Bottom Album',
+	'title-en' => 'Title EN',
+	'title-nl' => 'Title NL'
     
 ];
