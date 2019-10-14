@@ -22,7 +22,7 @@ class SiteSettingsLayout extends Rows {
      * @return Field[]
      */
     protected function fields(): array {
-    	$locale = app()->getLocale();
+        
         return [
             ImageUpload::make('logo')
                 ->title(__('panel.logo')),
@@ -37,19 +37,17 @@ class SiteSettingsLayout extends Rows {
                     ->max(255)
                     ->title(__('panel.facebook')),
             ],
-            TinyMCE::make('contact_en')
-                ->title(__('panel.footer-contact-en'))
+            TinyMCE::make('contact')
+                ->title(__('panel.footer-contact'))
                 ->theme('inlite'),
-			TinyMCE::make('contact_nl')
-				->title(__('panel.footer-contact-nl'))
-				->theme('inlite'),
+            
 			Select::make('display-album')
 				->type('select')
-                ->options(Album::select('id','title_' . $locale  )->get()->pluck('title_' . $locale,'id'))
+                ->options(Album::select('id','title')->get()->pluck('title','id'))
 				->title(__('panel.displayAlbum')),
 			Select::make('bottom-album')
 				->type('select')
-				->options(Album::select('id','title_' . $locale)->get()->pluck('title_' . $locale,'id'))
+				->options(Album::select('id','title')->get()->pluck('title','id'))
 				->title(__('panel.bottomAlbum')),
             Button::make(__('panel.update'))
                 ->method('store')

@@ -30,8 +30,7 @@ class UpdateAlbumRequest extends FormRequest {
         
         return [
             'album.thumbnail' => 'nullable|image',
-			'album.title_en' => 'required|string|unique:albums,title_en,'. $this->album->id,
-			'album.title_nl' => 'required|string|unique:albums,title_nl,' . $this->album->id
+            'album.title' => 'required|string|unique:albums,title,' . $this->album->id
         
         ];
     }
@@ -45,10 +44,8 @@ class UpdateAlbumRequest extends FormRequest {
 			$path = $this->processImage($image, $path);
 			$this->album->thumbnail = $path;
         }
-        $this->album->title_en = $this->input('album.title_en');
-		$this->album->title_nl = $this->input('album.title_nl');
-
-		$this->album->save();
+        $this->album->title = $this->input('album.title');
+        $this->album->save();
         return $this->album;
     }
 }

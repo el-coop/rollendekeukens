@@ -34,9 +34,8 @@ class CreateEntryRequest extends FormRequest {
             'type' => 'required|in:Photo,Text,Video',
             'entry.image' => 'image|required_if:type,Photo|required_if:type,video',
             'entry.video' => 'url|required_if:type,Video',
-            'entry.text_en' => 'string|required_if:type,Text',
-			'entry.text_nl' => 'string|required_if:type,Text'
-		];
+            'entry.text' => 'string|required_if:type,Text'
+        ];
     }
     
     public function commit() {
@@ -62,9 +61,8 @@ class CreateEntryRequest extends FormRequest {
                 break;
             case 'Text':
                 $entryExtended = new AlbumText;
-                $entryExtended->text_en = $this->input('entry.text_en');
-				$entryExtended->text_nl = $this->input('entry.text_nl');
-				break;
+                $entryExtended->text = $this->input('entry.text');
+                break;
         }
         $entryExtended->save();
         $entryExtended->entry()->save($entry);
