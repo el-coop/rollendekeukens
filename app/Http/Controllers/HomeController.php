@@ -36,10 +36,11 @@ class HomeController extends Controller {
         $albums = Album::with('entries')->getCached()->keyBy('id');
         
         $displayAlbum = $settings->get('display-album');
+		$displayEntries = $albums->get($displayAlbum)->entries;
+		$bottomAlbum = $settings->get('bottom-album');
+		$bottomEntries = $albums->get($bottomAlbum)->entries;
+        $albums->forget([$displayAlbum, $bottomAlbum]);
         
-        $entries = $albums->get($displayAlbum)->entries;
-        $albums->forget($displayAlbum);
-        
-        return view('site', compact('settings', 'albums', 'entries', 'footerLinks'));
+        return view('site', compact('settings', 'albums', 'displayEntries', 'footerLinks', 'bottomEntries'));
     }
 }

@@ -45,6 +45,10 @@ class SiteSettingsLayout extends Rows {
 				->type('select')
                 ->options(Album::select('id','title')->get()->pluck('title','id'))
 				->title(__('panel.displayAlbum')),
+			Select::make('bottom-album')
+				->type('select')
+				->options(Album::select('id','title')->get()->pluck('title','id'))
+				->title(__('panel.bottomAlbum')),
             Button::make(__('panel.update'))
                 ->method('store')
                 ->type(Button::PRIMARY)

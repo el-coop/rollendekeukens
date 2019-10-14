@@ -37,6 +37,7 @@ return [
     'thumbnail' => 'Thumbnail',
     'albumCreate' => 'Album Details',
     'entryCreate' => 'Entry Details',
-	'displayAlbum' => 'Displayed Album'
+	'displayAlbum' => 'Displayed Album',
+	'bottomAlbum' => 'Bottom Album'
     
 ];

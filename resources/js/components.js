@@ -6,4 +6,6 @@ Vue.component('AlbumPhoto', require('./components/AlbumPhoto').default);
 Vue.component('AlbumVideo', require('./components/AlbumVideo').default);
 Vue.component('AlbumText', require('./components/AlbumText').default);
 Vue.component('AlbumPhotos', require('./components/AlbumPhotos').default);
+Vue.component('BottomAlbum', require('./components/BottomAlbum').default);
+
 
