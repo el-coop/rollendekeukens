@@ -2,6 +2,10 @@
     max-width: 975px !important;
 }
 
+.mt-3 {
+    margin-top: $size-3;
+}
+
 .entries {
     display: flex;
     flex-wrap: wrap;
