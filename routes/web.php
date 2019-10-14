@@ -17,3 +17,4 @@ Route::get('logo', 'HomeController@logo');
 Route::get('thumbnail/{album}', 'HomeController@albumThumbnail');
 Route::get('image/{entry}', 'HomeController@entryImage');
 Route::get('footerImage/{footerLink}', 'HomeController@footerLinkImage');
+Route::get('/language/{language}', 'LocaleController@set');
