@@ -37,7 +37,7 @@
                        data-modal-key="{{ $modal }}"
                        data-modal-action="{{\URL::current()}}/{{$updateMethod}}"
                        :data-modal-params="`[${entry.id}]`"
-                       v-text="entry.title"
+                       v-text="entry.title_{{App::getLocale()}}"
                     >
                     </a>
                 </div>

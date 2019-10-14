@@ -4,7 +4,7 @@
     </div>
     <div class="column">
         <div class="content">
-            {!!  $settings->get('contact')  !!}
+            {!!  $settings->get('contact_' . App::getLocale())  !!}
         </div>
     </div>
 </div>

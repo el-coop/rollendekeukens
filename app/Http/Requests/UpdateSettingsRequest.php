@@ -9,7 +9,7 @@ use Storage;
 
 class UpdateSettingsRequest extends FormRequest {
     use ProcessImage;
-    protected $settings = ['instagram', 'facebook', 'contact', 'links-title', 'display-album', 'bottom-album'];
+    protected $settings = ['instagram', 'facebook', 'contact_en','contact_nl', 'links-title', 'display-album', 'bottom-album'];
     
     /**
      * Determine if the user is authorized to make this request.
@@ -30,8 +30,9 @@ class UpdateSettingsRequest extends FormRequest {
             'logo' => 'nullable|image',
             'instagram' => 'nullable|string|url',
             'facebook' => 'nullable|string|url',
-            'contact' => 'nullable|string',
-            'links-title' => 'nullable|string',
+            'contact_en' => 'nullable|string',
+			'contact_nl' => 'nullable|string',
+			'links-title' => 'nullable|string',
 			'display-album' => 'nullable|integer|exists:albums,id',
 			'bottom-album' => 'nullable|integer|exists:albums,id'
         ];

@@ -31,6 +31,7 @@ class HomeController extends Controller {
     }
     
     public function home() {
+    	$locale = app()->getLocale();
         $footerLinks = FooterLink::getCached();
         $settings = SiteSetting::select('key', 'value')->getCached()->pluck('value', 'key');
         $albums = Album::with('entries')->getCached()->keyBy('id');
