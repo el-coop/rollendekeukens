@@ -1,5 +1,5 @@
 <template>
-    <carousel :entries="albums">
+    <carousel :entries="dAlbums">
         <template #default="{entry, index}">
             <figure class="image album" @click="open(entry)">
                 <img class="album-image" :src="entry.thumbnailLink">
@@ -18,6 +18,18 @@
 				required: true
 			}
 		},
+
+        data(){
+			return {
+				dAlbums: []
+            }
+        },
+
+        mounted(){
+			while (this.dAlbums.length < 10){
+				this.dAlbums.push(this.albums[0]);
+            }
+        },
 
 		methods: {
 			open(entry) {

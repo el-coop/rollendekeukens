@@ -1,11 +1,13 @@
 <template>
-    <div class="carousel-wrapper">
+    <div class="is-relative">
         <div class="carousel__scroll carousel__scroll--left" v-if="currentScroll !== 0" @click="scroll(-1)">
             <font-awesome-icon icon="chevron-left"/>
         </div>
-        <div class="carousel" ref="carousel">
-            <div v-for="(entry, index) in entries" class="carousel-item">
-                <slot :entry="entry" :index="index"/>
+        <div class="carousel-wrapper" @scroll.passiv="onScroll" ref="wrapper">
+            <div class="carousel" ref="carousel" key="carousel">
+                <div v-for="(entry, index) in entries" :class="itemClass">
+                    <slot :entry="entry" :index="index"/>
+                </div>
             </div>
         </div>
         <div class="carousel__scroll carousel__scroll--right" v-if="currentScroll < maxScroll" @click="scroll(1)">
@@ -22,6 +24,11 @@
 			entries: {
 				type: Array,
 				required: true
+			},
+
+			itemClass: {
+				type: String,
+				default: 'carousel-item'
 			}
 		},
 
@@ -32,37 +39,36 @@
 			};
 		},
 
-		mounted() {
-			this.maxScroll = this.$refs.carousel.scrollWidth - this.$refs.carousel.clientWidth;
+		async mounted() {
+			await this.$nextTick();
+			this.maxScroll = this.$refs.wrapper.scrollWidth - this.$refs.wrapper.clientWidth;
 		},
 
 		methods: {
+			onScroll() {
+				this.currentScroll = this.$refs.wrapper.scrollLeft;
+			},
+
 			scroll(amount) {
-				const clientWidth = this.$refs.carousel.clientWidth;
-
-				this.maxScroll = this.$refs.carousel.scrollWidth - clientWidth;
-
+				const clientWidth = this.$refs.wrapper.clientWidth;
 				const entryWidth = this.$refs.carousel.firstChild.clientWidth;
+
 				const onPage = clientWidth / entryWidth;
 				const pageWidth = onPage * entryWidth;
 				const pages = Math.ceil(this.maxScroll / pageWidth);
 				let currentPage = Math.ceil(this.currentScroll / clientWidth);
+				this.maxScroll = this.$refs.wrapper.scrollWidth - clientWidth;
 
 				if (this.currentScroll === this.maxScroll) {
 					currentPage = pages;
 				}
 
-				this.currentScroll = Math.floor(onPage) * entryWidth * (currentPage + amount);
+				const scroll = Math.floor(onPage) * entryWidth * (currentPage + amount);
 
-				if (this.currentScroll < 0) {
-					this.currentScroll = 0;
-				} else if (this.currentScroll > this.maxScroll) {
-					this.currentScroll = this.maxScroll;
-				}
 
-				this.$refs.carousel.scroll({
-					left: this.currentScroll,
-					behavior: "smooth"
+				this.$refs.wrapper.scroll({
+					left: scroll,
+					behavior: 'smooth'
 				});
 			}
 		}
@@ -78,17 +84,17 @@
 
     .carousel-wrapper {
         position: relative;
-    }
-
-    .carousel {
-        display: flex;
-        max-width: 100%;
-        overflow-x: auto;
-        padding-bottom: 20px;
+        overflow: auto;
 
         @include from($tablet) {
             overflow-x: hidden;
         }
+    }
+
+    .carousel {
+        display: flex;
+        overflow-x: visible;
+        padding-bottom: 20px;
 
         &__scroll {
             display: none;

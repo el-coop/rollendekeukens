@@ -52,7 +52,6 @@ export default class extends window.Controller {
                 reject(error);
             });
             reader.addEventListener('loadend', (event) => {
-                console.log('loadend');
                 resolve(reader.result);
             });
             reader.readAsBinaryString(image);
