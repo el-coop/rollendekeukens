@@ -29,7 +29,7 @@
                     data-turbolinks="true"
                     :href="'{{$link}}'.replace('{id}',entry.id)"
                     @endif></a>
-                <div class="text-center text-muted mt-1">
+                <div class="text-center text-muted mt-1 thumbnail-gallery__entry-text">
                     <button :formaction="`{{\URL::current()}}/${entry.id}/{{$deleteMethod}}`"
                             class="btn btn-danger"><i class="icon-trash"></i></button>
                     <a data-action="screen--base#targetModal"

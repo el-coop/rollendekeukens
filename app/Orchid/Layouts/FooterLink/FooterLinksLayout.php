@@ -21,10 +21,6 @@ class FooterLinksLayout extends Table {
     protected function columns(): array {
         
         return [
-            
-            TD::set('text', __('panel.text'))
-                ->loadModalAsync('footerLinkModal', 'saveLink', 'id', 'text'),
-            
             TD::set('url', __('panel.url'))
                 ->loadModalAsync('footerLinkModal', 'saveLink', 'id', 'url'),
             

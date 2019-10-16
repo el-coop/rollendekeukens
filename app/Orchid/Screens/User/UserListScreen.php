@@ -34,11 +34,6 @@ class UserListScreen extends Screen {
     public $description = 'panel.usersDescription';
     
     /**
-     * @var string
-     */
-    public $permission = 'platform.systems.users';
-    
-    /**
      * Query data.
      *
      * @return array

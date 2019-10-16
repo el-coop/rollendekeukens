@@ -27,7 +27,7 @@ class HomeController extends Controller {
     
     public function footerLinkImage($footerLink) {
         $footerLink = FooterLink::where('id', $footerLink)->firstCached();
-        return Storage::response($footerLink->logo);
+        return Storage::    response($footerLink->logo);
     }
     
     public function home() {

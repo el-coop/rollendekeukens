@@ -28,8 +28,10 @@ class EntryLayout extends Tabs {
                 Input::make('entry.id')->type('hidden'),
                 ImageUpload::make('entry.image')
                     ->title(__('panel.image')),
-                TinyMCE::make('entry.text')
-                    ->title(__('panel.text')),
+                TinyMCE::make('entry.text_en')
+                    ->title(__('panel.text-en')),
+                TinyMCE::make('entry.text_nl')
+                    ->title(__('panel.text-nl')),
             ]),
             'Video' => Layout::rows([
                 Input::make('entry.id')->type('hidden'),

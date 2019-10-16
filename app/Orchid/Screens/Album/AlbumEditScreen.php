@@ -95,7 +95,8 @@ class AlbumEditScreen extends Screen {
             $entry = new AlbumEntry;
         } else {
             $entry->image = $entry->imageLink;
-            $entry->text = $entry->entry->text;
+            $entry->text_en = $entry->entry->text_en;
+            $entry->text_nl = $entry->entry->text_nl;
             $entry->video = $entry->entry->url;
         }
         return ['entry' => $entry];

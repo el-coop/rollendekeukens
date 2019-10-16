@@ -55,7 +55,7 @@ class PlatformScreen extends Screen {
             'instagram' => $settings->get('instagram', ''),
             'facebook' => $settings->get('facebook', ''),
             'contact_en' => $settings->get('contact_en', ''),
-    		  	'contact_nl' => $settings->get('contact_en', ''),
+            'contact_nl' => $settings->get('contact_nl', ''),
             'logo' => $settings->get('logo', false) ? action('HomeController@logo') : '',
             'links' => $links,
             'display-album' => $settings->get('display-album', 1),
@@ -115,6 +115,8 @@ class PlatformScreen extends Screen {
         $footerLink = FooterLink::find($request->input(0, 0));
         if (!$footerLink) {
             $footerLink = new FooterLink;
+        } else {
+            $footerLink->logo = action('HomeController@footerLinkImage', $footerLink);
         }
         
         return [

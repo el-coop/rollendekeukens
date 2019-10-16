@@ -18,17 +18,17 @@ class AlbumLayout extends Rows {
             Input::make('album.id')->type('hidden'),
             ImageUpload::make('album.thumbnail')
                 ->title(__('panel.thumbnail')),
-            Input::make('album.title')->type('text')
+            Input::make('album.title_en')->type('text')
                 ->required()
                 ->max(255)
                 ->horizontal()
                 ->title(__('panel.title-en')),
             Input::make('album.title_nl')->type('text')
-              ->required()
-              ->max(255)
-              ->horizontal()
-              ->title(__('panel.title-nl'))
-
+                ->required()
+                ->max(255)
+                ->horizontal()
+                ->title(__('panel.title-nl'))
+        
         ];
     }
 }
