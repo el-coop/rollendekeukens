@@ -25,7 +25,8 @@ class CreateUserRequest extends FormRequest {
 		return [
 			'user.email' => 'required|email|unique:users,email',
 			'user.name' => 'required|string|max:255',
-			'password' => 'required|min:6|confirmed'
+			'password' => 'required|min:6|confirmed',
+			'user.language' => 'required|string|in:en,nl'
 		];
 	}
 
@@ -42,6 +43,7 @@ class CreateUserRequest extends FormRequest {
 		$user->name = $this->input('user.name');
 		$user->password = bcrypt($this->input('password'));
 		$user->permissions = $permissions;
+		$user->language = $this->input('user.language');
 		$user->save();
 	}
 }

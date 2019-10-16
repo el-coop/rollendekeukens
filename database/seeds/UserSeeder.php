@@ -18,7 +18,8 @@ class UserSeeder extends Seeder {
         factory(\App\User::class)->create([
             'email' => 'admin@test.com',
             'password' => bcrypt('123456'),
-            'permissions' => $permissions
+            'permissions' => $permissions,
+			'language' => 'en'
         ]);
     }
 }
