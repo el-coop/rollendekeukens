@@ -40,11 +40,9 @@ class SiteSettingsLayout extends Rows {
                     ->title(__('panel.facebook')),
             ],
             TinyMCE::make('contact_en')
-                ->title(__('panel.footer-contact-en'))
-                ->theme('inlite'),
+                ->title(__('panel.footer-contact-en')),
             TinyMCE::make('contact_nl')
-                ->title(__('panel.footer-contact-nl'))
-                ->theme('inlite'),
+                ->title(__('panel.footer-contact-nl')),
             
             TextArea::make('meta-description')
                 ->title('panel.meta-description'),

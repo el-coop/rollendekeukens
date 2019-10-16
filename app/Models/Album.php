@@ -13,7 +13,7 @@ class Album extends Model {
     protected $appends = ['title'];
     
     public function entries() {
-        return $this->hasMany(AlbumEntry::class);
+        return $this->hasMany(AlbumEntry::class)->orderBy('order');
     }
     
     public function getPreviewAttribute() {
