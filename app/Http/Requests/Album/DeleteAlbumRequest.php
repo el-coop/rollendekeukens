@@ -30,13 +30,13 @@ class DeleteAlbumRequest extends FormRequest {
     public function commit() {
         $album = Album::find($this->route('method'));
         $album->entries->each(function ($entry) {
-            if (Storage::exists($entry->image)) {
-                Storage::delete($entry->image);
+            if (Storage::exists("public/{$entry->image}")) {
+                Storage::delete("public/{$entry->image}");
             }
             $entry->entry()->delete();
             $entry->delete();
         });
-        Storage::delete($album->thumbnail);
+        Storage::delete("public/{$album->thumbnail}");
         return $album->delete();
     }
 }

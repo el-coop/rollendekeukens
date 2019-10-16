@@ -2,7 +2,7 @@
     <carousel :entries="albums">
         <template #default="{entry, index}">
             <figure class="image album" @click="open(entry)">
-                <img class="album-image" :src="entry.thumbnailLink">
+                <img class="album-image" :src="`/storage/${entry.thumbnail}`">
             </figure>
             <div class="has-text-centered is-size-7" v-text="entry.title"></div>
         </template>

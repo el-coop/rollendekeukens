@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+@import "~bulma/sass/utilities/_all";
+@import "~bulma/sass/base/_all";
+//@import "~bulma/sass/elements/_all";
+// elements
+@import "~bulma/sass/elements/box.sass";
+@import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/elements/content.sass";
+@import "~bulma/sass/elements/image.sass";
+@import "~bulma/sass/elements/title.sass";
+//@import "~bulma/sass/components/_all";
+@import "~bulma/sass/components/modal";
+@import "~bulma/sass/components/navbar";
+// grid
+@import "~bulma/sass/grid/columns";
+// layout
+@import "~bulma/sass/layout/section";

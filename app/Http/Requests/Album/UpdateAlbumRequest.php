@@ -38,7 +38,7 @@ class UpdateAlbumRequest extends FormRequest {
     
     public function commit() {
         if ($this->hasFile('album.thumbnail')) {
-            Storage::delete($this->album->thumbnail);
+            Storage::delete("public/{$this->album->thumbnail}");
 			$image = $this->file('album.thumbnail');
 
 			$path = 'public/images/' . $image->hashName();

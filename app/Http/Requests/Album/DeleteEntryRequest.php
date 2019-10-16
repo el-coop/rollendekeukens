@@ -29,8 +29,8 @@ class DeleteEntryRequest extends FormRequest {
     
     public function commit() {
         $entry = AlbumEntry::find($this->route('method'));
-        if (Storage::exists($entry->image)) {
-            Storage::delete($entry->image);
+        if (Storage::exists("public/{$entry->image}")) {
+            Storage::delete("public/{$entry->image}");
         }
         $entry->entry()->delete();
         return $entry->delete();

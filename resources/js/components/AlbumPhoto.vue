@@ -1,17 +1,17 @@
 <template>
     <figure class="image">
-        <img :src="data.imageLink">
+        <img :src="`storage/${data.image}`">
     </figure>
 </template>
 
 <script>
-    export default {
-        name: "AlbumPhoto",
-        props: {
-            data: {
-                type: Object,
-                required: true
-            }
-        }
-    }
+	export default {
+		name: "AlbumPhoto",
+		props: {
+			data: {
+				type: Object,
+				required: true
+			}
+		}
+	}
 </script>

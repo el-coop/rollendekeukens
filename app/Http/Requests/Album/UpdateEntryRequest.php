@@ -43,8 +43,8 @@ class UpdateEntryRequest extends FormRequest {
     
     public function commit() {
         if ($this->hasFile('entry.image')) {
-            if (Storage::exists($this->entry->image)) {
-                Storage::delete($this->entry->image);
+            if (Storage::exists("public/{$this->entry->image}")) {
+                Storage::delete("public/{$this->entry->image}");
             }
             $image = $this->file('entry.image');
             $path = 'public/images/' . $image->hashName();

@@ -46,7 +46,7 @@ class UpdateSettingsRequest extends FormRequest {
 		if ($this->hasFile('logo')) {
 			$logo = $this->findOrNew('logo');
 			if ($logo->value) {
-				Storage::delete($logo->value);
+				Storage::delete("public/{$logo->value}");
 			}
 			$image = $this->file('logo');
 			$path = 'public/images/' . $image->hashName();

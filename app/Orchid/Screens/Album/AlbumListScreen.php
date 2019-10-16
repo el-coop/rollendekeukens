@@ -84,7 +84,7 @@ class AlbumListScreen extends Screen {
         if (!$album) {
             $album = new Album;
         } else {
-            $album->thumbnail = $album->thumbnailLink;
+            $album->thumbnail = "/storage/{$album->thumbnail}";
         }
         return ['album' => $album];
     }

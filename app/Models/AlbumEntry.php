@@ -10,7 +10,7 @@ class AlbumEntry extends Model {
     use Cacheable;
     use AsSource;
     protected $with = ['entry'];
-    protected $appends = ['imageLink', 'type'];
+    protected $appends = ['type'];
     
     public function album() {
         return $this->belongsTo(Album::class);
@@ -20,15 +20,11 @@ class AlbumEntry extends Model {
         return $this->morphTo();
     }
     
-    public function getImageLinkAttribute() {
-        return action('HomeController@entryImage', ['entry' => $this, 'time' => $this->entry->updated_at->timestamp]);
-    }
-    
     public function getPreviewAttribute() {
         if (method_exists($this->entry, 'getPreviewAttribute')) {
             return $this->entry->preview;
         }
-        return "<img src='{$this->imageLink}' class='thumbnail-gallery__entry-image'>";
+        return "<img src='/storage/{$this->image}' class='thumbnail-gallery__entry-image'>";
     }
 
 	public function getTypeAttribute() {
