@@ -5,7 +5,7 @@
             <template #default="{entry, index}">
                 <div class="modal-carousel__thumbnail" @click="show(entry)">
                     <figure class="image modal-carousel__thumbnail-image-wrapper" v-if="entry.image">
-                        <img class="modal-carousel__thumbnail-image" :src="`storage/${entry.image}`">
+                        <img class="modal-carousel__thumbnail-image" :src="`storage/${entry.image}`" :alt="entry.type">
                     </figure>
                     <div v-html="entry.entry.text" v-else/>
                 </div>

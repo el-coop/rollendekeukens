@@ -56,6 +56,7 @@ class PlatformScreen extends Screen {
             'facebook' => $settings->get('facebook', ''),
             'contact_en' => $settings->get('contact_en', ''),
             'contact_nl' => $settings->get('contact_nl', ''),
+            'meta-description' => $settings->get('description', ''),
             'logo' => $settings->get('logo', false) ? "/storage/{$settings->get('logo')}" : '',
             'links' => $links,
             'display-album' => $settings->get('display-album', 1),
