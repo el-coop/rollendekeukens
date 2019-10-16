@@ -26,15 +26,13 @@ class CreateAlbumRequest extends FormRequest {
 	public function rules() {
 		return [
 		    'album.thumbnail' => 'required|image',
-			'album.title_en' => 'required|string|unique:albums,title_en',
-			'album.title_nl' => 'required|string|unique:albums,title_nl'
+			'album.title' => 'required|string|unique:albums,title'
 		];
 	}
 
 	public function commit() {
 		$album = new Album;
-		$album->title_en = $this->input('album.title_en');
-		$album->title_nl = $this->input('album.title_nl');
+		$album->title = $this->input('album.title');
 		$image = $this->file('album.thumbnail');
 
 		$path = 'public/images/' . $image->hashName();

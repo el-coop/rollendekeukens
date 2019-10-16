@@ -15,8 +15,7 @@ class CreateAlbumTextsTable extends Migration
     {
         Schema::create('album_texts', function (Blueprint $table) {
             $table->bigIncrements('id');
-			$table->text('text_en');
-			$table->text('text_nl');
+			$table->text('text');
             $table->timestamps();
         });
     }

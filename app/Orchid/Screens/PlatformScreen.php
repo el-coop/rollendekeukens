@@ -55,7 +55,7 @@ class PlatformScreen extends Screen {
             'instagram' => $settings->get('instagram', ''),
             'facebook' => $settings->get('facebook', ''),
             'contact_en' => $settings->get('contact_en', ''),
-			'contact_nl' => $settings->get('contact_en', ''),
+    		  	'contact_nl' => $settings->get('contact_en', ''),
             'logo' => $settings->get('logo', false) ? action('HomeController@logo') : '',
             'links' => $links,
             'display-album' => $settings->get('display-album', 1),
