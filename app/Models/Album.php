@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\AsSource;
 
 class Album extends Model {
-
+    
     use AsSource, Cacheable;
-    protected $appends = ['thumbnailLink'];
+    protected $appends = ['thumbnailLink', 'title'];
     
     public function entries() {
         return $this->hasMany(AlbumEntry::class);
@@ -22,5 +22,10 @@ class Album extends Model {
     
     public function getPreviewAttribute() {
         return "<img src='{$this->thumbnailLink}' class='thumbnail-gallery__entry-image rounded-circle'>";
+    }
+    
+    public function getTitleAttribute() {
+        $title = 'title_' . app()->getLocale();
+        return $this->$title;
     }
 }
