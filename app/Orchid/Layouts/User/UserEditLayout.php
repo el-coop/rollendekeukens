@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid\Layouts\User;
 
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
 
 class UserEditLayout extends Rows
@@ -46,6 +47,8 @@ class UserEditLayout extends Rows
                 ->horizontal()
                 ->title(__('user.email'))
                 ->placeholder(__('user.email')),
+			Select::make('user.language')
+			->type('select')->options(['en' => 'en', 'nl' => 'nl'])->title(__('panel.language')),
 			$passwordInput,
 			$passwordConfirm
         ];

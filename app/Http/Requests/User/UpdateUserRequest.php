@@ -26,13 +26,15 @@ class UpdateUserRequest extends FormRequest {
 		return [
 			'user.email' => 'required|email|unique:users,email,' . $this->user->id,
 			'user.name' => 'required|string|max:255',
-			'password' => 'nullable|min:6|confirmed'
+			'password' => 'nullable|min:6|confirmed',
+			'user.language' => 'required|string|in:en,nl'
 		];
 	}
 
 	public function commit() {
 		$this->user->name = $this->input('user.name');
 		$this->user->email = $this->input('user.email');
+		$this->user->language = $this->input('user.language');
 		if ($this->input('password')){
 			$this->user->password = bcrypt($this->input('password'));
 		}
