@@ -92,28 +92,28 @@ class AlbumListScreen extends Screen {
     public function create(CreateAlbumRequest $request) {
         $request->commit();
         Album::flushCache();
-        Alert::success('Album created');
+        Alert::success(__('album.created'));
         return back();
     }
     
     public function update(UpdateAlbumRequest $request) {
         $request->commit();
         Album::flushCache();
-        Alert::success('Album updated');
+        Alert::success(__('album.updated'));
         return back();
     }
     
     public function delete(DeleteAlbumRequest $request) {
         $request->commit();
         Album::flushCache();
-        Alert::success('Album Deleted');
+        Alert::success(__('album.deleted'));
         return back();
     }
     
     public function reorder(AlbumReorderRequest $request) {
         $request->commit();
         Album::flushCache();
-        Alert::success('Albums Reordered');
+        Alert::success(__('album.reordered'));
         return back();
     }
 }
