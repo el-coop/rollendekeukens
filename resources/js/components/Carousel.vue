@@ -95,6 +95,7 @@
         display: flex;
         overflow-x: visible;
         padding-bottom: 20px;
+        justify-content: space-between;
 
         &__scroll {
             display: none;

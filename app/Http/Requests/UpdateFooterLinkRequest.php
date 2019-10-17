@@ -10,7 +10,8 @@ use Storage;
 
 class UpdateFooterLinkRequest extends FormRequest {
     use ProcessImage;
-	/**
+    
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -29,7 +30,7 @@ class UpdateFooterLinkRequest extends FormRequest {
             'link' => 'array',
             'link.id' => 'nullable|exists:footer_links,id',
             'link.url' => 'required|string|url',
-			'link.logo' => 'required|image'
+            'link.logo' => 'required|image|clamav'
         ];
     }
     
@@ -38,12 +39,12 @@ class UpdateFooterLinkRequest extends FormRequest {
         $footerLink = new FooterLink;
         if (isset($link['id'])) {
             $footerLink = FooterLink::find($link['id']);
-			Storage::delete($footerLink->logo);
+            Storage::delete("public/{$footerLink->logo}");
         }
         $image = $this->file('link.logo');
-		$path = 'public/images/' . $image->hashName();
-		$path = $this->processImage($image, $path);
-		$footerLink->logo = $path;
+        $path = 'public/images/' . $image->hashName();
+        $path = $this->processImage($image, $path);
+        $footerLink->logo = $path;
         $footerLink->url = $link['url'];
         $footerLink->save();
     }

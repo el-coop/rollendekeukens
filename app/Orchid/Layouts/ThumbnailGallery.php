@@ -29,7 +29,6 @@ class ThumbnailGallery extends Base {
         if (!$this->checkPermission($this, $repository)) {
             return;
         }
-        
         return view($this->template, [
             'entries' => $repository->getContent($this->target),
             'src' => $this->src,

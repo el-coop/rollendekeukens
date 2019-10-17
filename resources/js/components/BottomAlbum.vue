@@ -3,7 +3,7 @@
         <template #default="{entry, index}">
             <div @click="open(entry)" style="height: 100%">
                 <figure class="image is-square" v-if="entry.image">
-                    <img class="entries__entry-image" :src="entry.imageLink">
+                    <img class="entries__entry-image" :src="`storage/${entry.image}`" :alt="entry.type">
                 </figure>
                 <div class="entries__entry-content" v-html="entry.entry.text" v-else/>
             </div>

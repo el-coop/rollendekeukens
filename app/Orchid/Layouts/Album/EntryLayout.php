@@ -4,6 +4,7 @@ namespace App\Orchid\Layouts\Album;
 
 use App\Orchid\Fields\EntryOptions;
 use App\Orchid\Fields\ImageUpload;
+use App\Orchid\Fields\TinyMCE5;
 use Illuminate\Support\Arr;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;

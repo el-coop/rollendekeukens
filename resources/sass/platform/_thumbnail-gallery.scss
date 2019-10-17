@@ -3,22 +3,23 @@
     flex-wrap: wrap;
 
     &__entry {
-        height: 120px;
+        height: 140px;
         width: 100px;
         margin: 15px;
         position: relative;
+        overflow: hidden;
 
         &-image {
             width: 100%;
-            height: calc(100% - 20px);
+            height: calc(100% - 40px);
             object-fit: cover;
             object-position: center center;
             display: block;
         }
 
         &-text {
-            white-space: nowrap;
-
+            height: calc(100% - 40px);
+            overflow: hidden;
         }
 
         &-link {

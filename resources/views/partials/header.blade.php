@@ -1,6 +1,6 @@
 <div class="columns">
     <div class="column is-4">
-        <img class="site-logo" src="{{action('HomeController@logo')}}">
+        <img class="site-logo" src="/storage/{{ $settings->get('logo') }}" alt="{{ config('app.name') }}">
     </div>
     <div class="column">
         <div class="content">

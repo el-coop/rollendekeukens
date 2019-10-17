@@ -43,6 +43,8 @@ return [
 	'displayAlbum' => 'Displayed Album',
 	'bottomAlbum' => 'Bottom Album',
 	'title-en' => 'Title EN',
-	'title-nl' => 'Title NL'
+	'title-nl' => 'Title NL',
+    'meta-description' => 'Meta Description',
+    'image' => 'Image'
     
 ];

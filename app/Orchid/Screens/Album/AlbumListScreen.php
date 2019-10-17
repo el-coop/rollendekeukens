@@ -39,7 +39,7 @@ class AlbumListScreen extends Screen {
      */
     public function query(): array {
         return [
-            'albums' => Album::orderBy('order')->get()->each(function($item){
+            'albums' => Album::orderBy('order')->get()->each(function ($item) {
                 $item->src = $item->preview;
             })
         ];
@@ -84,7 +84,7 @@ class AlbumListScreen extends Screen {
         if (!$album) {
             $album = new Album;
         } else {
-            $album->thumbnail = $album->thumbnailLink;
+            $album->thumbnail = "/storage/{$album->thumbnail}";
         }
         return ['album' => $album];
     }
@@ -102,6 +102,7 @@ class AlbumListScreen extends Screen {
         Alert::success('Album updated');
         return back();
     }
+    
     public function delete(DeleteAlbumRequest $request) {
         $request->commit();
         Album::flushCache();

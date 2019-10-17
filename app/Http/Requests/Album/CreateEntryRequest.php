@@ -32,7 +32,7 @@ class CreateEntryRequest extends FormRequest {
     public function rules() {
         return [
             'type' => 'required|in:Photo,Text,Video',
-            'entry.image' => 'image|required_if:type,Photo|required_if:type,video',
+            'entry.image' => 'image|required_if:type,Photo|required_if:type,video|clamav',
             'entry.video' => 'url|required_if:type,Video',
             'entry.text_en' => 'string|required_if:type,Text',
             'entry.text_nl' => 'string|required_if:type,Text'

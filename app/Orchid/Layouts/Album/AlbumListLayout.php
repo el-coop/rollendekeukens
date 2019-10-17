@@ -12,7 +12,6 @@ class AlbumListLayout extends ThumbnailGallery {
     
     protected $target = 'albums';
     protected $modal = 'createAlbumModal';
-    protected $src = 'thumbnailLink';
     protected $createMethod = 'create';
     protected $updateMethod = 'update';
     protected $deleteMethod = 'delete';
