@@ -108,7 +108,7 @@ class AlbumEditScreen extends Screen {
         $request->commit();
         Album::flushCache();
         AlbumEntry::flushCache();
-        Alert::info(__('Entry saved.'));
+        Alert::info(__('entry.created'));
         return redirect()->back();
     }
     
@@ -116,7 +116,7 @@ class AlbumEditScreen extends Screen {
         $request->commit();
         Album::flushCache();
         AlbumEntry::flushCache();
-        Alert::success('Entry updated.');
+        Alert::success(__('entry.updated'));
         return back();
     }
     
@@ -124,13 +124,14 @@ class AlbumEditScreen extends Screen {
         $request->commit();
         Album::flushCache();
         AlbumEntry::flushCache();
-        return redirect()->back();
+		Alert::success(__('entry.deleted'));
+		return redirect()->back();
     }
     
     public function reorder(EntryReorderRequest $request) {
         $request->commit();
         Album::flushCache();
-        Alert::success('Albums Reordered');
+        Alert::success(__('entry.reordered'));
         return back();
     }
 }

@@ -101,7 +101,7 @@ class UserListScreen extends Screen {
      */
     public function createUser(CreateUserRequest $request) {
        $request->commit();
-        Alert::info(__('User was saved.'));
+        Alert::info(__('user.created'));
         return back();
     }
 
@@ -114,7 +114,7 @@ class UserListScreen extends Screen {
 
 	public function updateUser(UpdateUserRequest $request) {
 		$request->commit();
-		Alert::info(__('User was saved.'));
+		Alert::info(__('user.saved'));
 		return back();
 	}
 }

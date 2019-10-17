@@ -41,7 +41,7 @@ class EntryLayout extends Tabs {
                 Input::make('entry.video')
                     ->type('url')
                     ->max(255)
-                    ->title(__('panel.youtube')),
+                    ->title(__('entry.youtube')),
             ])
         ];
     }

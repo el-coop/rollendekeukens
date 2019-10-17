@@ -8,17 +8,15 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
 
-class UserEditLayout extends Rows
-{
-    /**
-     * Views.
-     *
-     * @throws \Throwable|\Orchid\Screen\Exceptions\TypeException
-     *
-     * @return array
-     */
-    public function fields(): array
-    {
+class UserEditLayout extends Rows {
+	/**
+	 * Views.
+	 *
+	 * @throws \Throwable|\Orchid\Screen\Exceptions\TypeException
+	 *
+	 * @return array
+	 */
+	public function fields(): array {
 		$passwordInput = Input::make('password')->type('password')
 			->title(__('passwords.password'))
 			->placeholder(__('passwords.password'))
@@ -27,30 +25,33 @@ class UserEditLayout extends Rows
 			->title(__('passwords.confirm'))
 			->placeholder(__('passwords.confirm'))
 			->horizontal();
-    	if ($this->query['user'] && !$this->query['user']->id ){
-    		$passwordInput->required();
-    		$passwordConfirm->required();
+		if ($this->query['user'] && !$this->query['user']->id) {
+			$passwordInput->required();
+			$passwordConfirm->required();
 		}
-        return [
-        	Input::make('user.id')->type('hidden'),
-            Input::make('user.name')
-                ->type('text')
-                ->max(255)
-                ->required()
-                ->horizontal()
-                ->title(__('user.name'))
-                ->placeholder(__('user.name')),
+		return [
+			Input::make('user.id')->type('hidden'),
+			Input::make('user.name')
+				->type('text')
+				->max(255)
+				->required()
+				->horizontal()
+				->title(__('user.name'))
+				->placeholder(__('user.name')),
 
-            Input::make('user.email')
-                ->type('email')
-                ->required()
-                ->horizontal()
-                ->title(__('user.email'))
-                ->placeholder(__('user.email')),
+			Input::make('user.email')
+				->type('email')
+				->required()
+				->horizontal()
+				->title(__('user.email'))
+				->placeholder(__('user.email')),
 			Select::make('user.language')
-			->type('select')->options(['en' => 'en', 'nl' => 'nl'])->title(__('panel.language')),
+				->type('select')
+				->required()
+				->horizontal()
+				->options(['en' => 'en', 'nl' => 'nl'])->title(__('user.language')),
 			$passwordInput,
 			$passwordConfirm
-        ];
-    }
+		];
+	}
 }
