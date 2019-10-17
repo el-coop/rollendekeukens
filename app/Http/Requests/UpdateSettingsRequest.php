@@ -27,7 +27,7 @@ class UpdateSettingsRequest extends FormRequest {
 	 */
 	public function rules() {
 		return [
-			'logo' => 'nullable|image',
+			'logo' => 'nullable|image|clamav',
 			'instagram' => 'nullable|string|url',
 			'facebook' => 'nullable|string|url',
 			'contact_en' => 'nullable|string',

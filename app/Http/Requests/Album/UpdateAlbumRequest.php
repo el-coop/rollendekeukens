@@ -29,7 +29,7 @@ class UpdateAlbumRequest extends FormRequest {
         $this->album = Album::findOrFail($this->input('album.id'));
         
         return [
-            'album.thumbnail' => 'nullable|image',
+            'album.thumbnail' => 'nullable|image|clamav',
             'album.title_en' => 'required|string|unique:albums,title_en,'. $this->album->id,
             'album.title_nl' => 'required|string|unique:albums,title_nl,' . $this->album->id
         

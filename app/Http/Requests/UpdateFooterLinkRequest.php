@@ -30,7 +30,7 @@ class UpdateFooterLinkRequest extends FormRequest {
             'link' => 'array',
             'link.id' => 'nullable|exists:footer_links,id',
             'link.url' => 'required|string|url',
-            'link.logo' => 'required|image'
+            'link.logo' => 'required|image|clamav'
         ];
     }
     

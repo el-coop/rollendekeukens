@@ -34,7 +34,7 @@ class UpdateEntryRequest extends FormRequest {
         $this->entry = AlbumEntry::findOrFail($this->input('entry.id'));
         return [
             'type' => 'required|in:Photo,Text,Video',
-            'entry.image' => 'image|nullable',
+            'entry.image' => 'image|nullable|clamav',
             'entry.video' => 'url|required_if:type,Video',
             'entry.text_en' => 'string|required_if:type,Text',
             'entry.text_nl' => 'string|required_if:type,Text'

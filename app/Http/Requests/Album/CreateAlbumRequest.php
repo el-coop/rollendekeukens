@@ -26,7 +26,7 @@ class CreateAlbumRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'album.thumbnail' => 'required|image',
+            'album.thumbnail' => 'required|image|clamav',
             'album.title_en' => 'required|string|unique:albums,title_en',
             'album.title_nl' => 'required|string|unique:albums,title_nl'
         ];
