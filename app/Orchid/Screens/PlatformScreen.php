@@ -56,6 +56,8 @@ class PlatformScreen extends Screen {
             'facebook' => $settings->get('facebook', ''),
             'contact_en' => $settings->get('contact_en', ''),
             'contact_nl' => $settings->get('contact_nl', ''),
+            'top_text_en' => $settings->get('top_text_en', ''),
+            'top_text_nl' => $settings->get('top_text_nl', ''),
             'meta-description' => $settings->get('description', ''),
             'logo' => $settings->get('logo', false) ? "/storage/{$settings->get('logo')}" : '',
             'links' => $links,
@@ -72,12 +74,15 @@ class PlatformScreen extends Screen {
         return [
             Link::make(__('panel.users'))
                 ->href(action('\App\Orchid\Screens\User\UserListScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-user'),
             Link::make(__('panel.albums'))
                 ->href(action('\App\Orchid\Screens\Album\AlbumListScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-picture'),
             Link::make(__('panel.site'))
                 ->href(env('APP_URL'))
+                ->turbolinks(false)
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
         
@@ -108,7 +113,7 @@ class PlatformScreen extends Screen {
             
             Layout::modal('footerLinkModal', [
                 FooterLinkLayout::class
-            ])->title(__('panel.linkModalTitle'))->async('asyncFooterLink'),
+            ])->rawClick()->title(__('panel.linkModalTitle'))->async('asyncFooterLink'),
         ];
     }
     

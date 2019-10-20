@@ -1,6 +1,6 @@
 .footer-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 
     @include from($tablet) {
@@ -9,10 +9,16 @@
 
 
     &__item {
-        width: 96px;
-
-        @include from($tablet) {
-            margin: $gap;
+        @include until($tablet) {
+            flex: 1 0 50%;
+            padding: 0 $gap $gap;
+            max-width: 250px;
         }
+        width: 96px;
+        @include from($tablet) {
+            margin: 0 $gap $gap;
+        }
+
+
     }
 }

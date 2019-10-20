@@ -26,7 +26,7 @@
                    data-modal-action="{{\URL::current()}}/{{$updateMethod}}"
                    :data-modal-params="`[${entry.id}]`"
                    @else
-                   data-turbolinks="true"
+                   data-turbolinks="false"
                    :href="'{{$link}}'.replace('{id}',entry.id)"
                     @endif></a>
                 <div class="text-center text-muted mt-1 thumbnail-gallery__entry-text">

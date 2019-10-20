@@ -21,5 +21,16 @@
             cursor: pointer;
         }
     }
+
+    &__image {
+        @extend .is-square;
+
+        > img {
+            object-fit: cover;
+            object-position: center center;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
 }
 

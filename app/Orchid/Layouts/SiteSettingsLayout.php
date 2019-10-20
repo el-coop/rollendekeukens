@@ -39,6 +39,11 @@ class SiteSettingsLayout extends Rows {
                     ->max(255)
                     ->title(__('panel.facebook')),
             ],
+            TinyMCE::make('top_text_en')
+                ->title(__('panel.top-text-en')),
+            TinyMCE::make('top_text_nl')
+                ->title(__('panel.top-text-nl')),
+    
             TinyMCE::make('contact_en')
                 ->title(__('panel.footer-contact-en')),
             TinyMCE::make('contact_nl')
@@ -56,6 +61,7 @@ class SiteSettingsLayout extends Rows {
                 ->title(__('panel.bottomAlbum')),
             Button::make(__('panel.update'))
                 ->method('store')
+                ->turbolinks(false)
                 ->type(Button::PRIMARY)
         
         ];

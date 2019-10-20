@@ -6,3 +6,8 @@ import TinyMCE5 from "./controllers/TinyMCE5";
 application.register("fields--image-upload", ImageUploadController);
 application.register("layouts--entry-options", EntryOptions);
 application.register("fields--tinymce5", TinyMCE5);
+
+
+$('.modal').on('shown.bs.modal', function() {
+    $(document).off('focusin.modal');
+});
