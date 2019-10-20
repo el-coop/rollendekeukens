@@ -4,7 +4,7 @@
             <figure class="image album" @click="open(entry)">
                 <img class="album-image" :src="`/storage/${entry.thumbnail}`" :alt="entry.title">
             </figure>
-            <div class="has-text-centered is-size-7" v-text="entry.title"></div>
+            <div class="has-text-centered has-text-weight-bold is-size-7" v-text="entry.title"></div>
         </template>
     </carousel>
 </template>

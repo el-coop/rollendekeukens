@@ -59,16 +59,20 @@ class AlbumEditScreen extends Screen {
         return [
             Link::make(__('panel.users'))
                 ->href(action('\App\Orchid\Screens\User\UserListScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-user'),
             Link::make(__('panel.settingsTab'))
                 ->href(action('\App\Orchid\Screens\PlatformScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-picture'),
             Link::make(__('panel.albums'))
                 ->href(action('\App\Orchid\Screens\Album\AlbumListScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-picture'),
             
             Link::make(__('panel.site'))
                 ->href(env('APP_URL'))
+                ->turbolinks(false)
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
         ];
@@ -84,7 +88,7 @@ class AlbumEditScreen extends Screen {
             EntryListLayout::class,
             Layout::modal('entryModal', [
                 EntryLayout::class
-            ])->title(__('panel.entryCreate'))->async('asyncEntry')
+            ])->rawClick()->title(__('panel.entryCreate'))->async('asyncEntry')
         ];
     }
     

@@ -1,0 +1,6 @@
+.section {
+    padding: $section-padding;
+    @include from($tablet){
+        padding: $section-padding-medium;
+    }
+}

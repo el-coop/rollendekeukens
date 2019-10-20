@@ -1,10 +1,8 @@
-<div class="columns">
-    <div class="column is-4">
-        <img class="site-logo" src="/storage/{{ $settings->get('logo') }}" alt="{{ config('app.name') }}">
-    </div>
-    <div class="column">
-        <div class="content">
-            {!!  $settings->get('contact_' . App::getLocale())  !!}
-        </div>
-    </div>
+<div class="content header-text">
+    {!!  $settings->get('top_text_' . App::getLocale())  !!}
+</div>
+
+<figure class="image"><img src="/storage/{{ $settings->get('logo') }}" alt="{{ config('app.name') }}"></figure>
+<div class="content header-text">
+    {!!  $settings->get('contact_' . App::getLocale())  !!}
 </div>

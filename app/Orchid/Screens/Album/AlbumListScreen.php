@@ -54,12 +54,15 @@ class AlbumListScreen extends Screen {
         return [
             Link::make(__('panel.users'))
                 ->href(action('\App\Orchid\Screens\User\UserListScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-user'),
             Link::make(__('panel.settingsTab'))
                 ->href(action('\App\Orchid\Screens\PlatformScreen@handle'))
+                ->turbolinks(false)
                 ->icon('icon-picture'),
             Link::make(__('panel.site'))
                 ->href(env('APP_URL'))
+                ->turbolinks(false)
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
         ];
@@ -75,7 +78,7 @@ class AlbumListScreen extends Screen {
             AlbumListLayout::class,
             Layout::modal('createAlbumModal', [
                 AlbumLayout::class
-            ])->title(__('panel.albumCreate'))->async('asyncAlbum')
+            ])->rawClick()->title(__('panel.albumCreate'))->async('asyncAlbum')
         ];
     }
     

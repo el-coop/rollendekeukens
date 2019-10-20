@@ -1,6 +1,6 @@
 <template>
     <div class="modal-carousel">
-        <component :is="type" :data="selected"/>
+        <component :is="type" :data="selected" class="modal-carousel__image"/>
         <carousel :entries="entries">
             <template #default="{entry, index}">
                 <div class="modal-carousel__thumbnail" @click="show(entry)">

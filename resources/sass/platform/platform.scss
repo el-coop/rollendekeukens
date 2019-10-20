@@ -3,3 +3,7 @@
 @import "progress-bar";
 @import "image-upload";
 @import "thumbnail-gallery";
+
+.tox .tox-dialog {
+    z-index: 10000 !important;
+}
