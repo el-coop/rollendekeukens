@@ -19,6 +19,11 @@
 .entries {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 0.5em;
+
+    @include from($tablet) {
+        margin: 0;
+    }
 
     &__entry {
         cursor: pointer;
