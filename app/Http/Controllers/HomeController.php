@@ -16,10 +16,17 @@ class HomeController extends Controller {
         $settings = SiteSetting::select('key', 'value')->getCached()->pluck('value', 'key');
         $albums = Album::with('entries')->getCached()->keyBy('id');
         
-        $displayAlbum = $settings->get('display-album');
-        $displayEntries = $albums->get($displayAlbum)->entries;
-        $bottomAlbum = $settings->get('bottom-album');
-        $bottomEntries = $albums->get($bottomAlbum)->entries;
+        
+        if($displayAlbum = $settings->get('display-album')){
+            $displayEntries = $albums->get($displayAlbum)->entries;
+        } else {
+            $displayEntries = collect();
+        }
+        if($bottomAlbum = $settings->get('bottom-album')){
+            $bottomEntries = $albums->get($bottomAlbum)->entries;
+        } else {
+            $bottomEntries = collect();
+        }
         $albums->forget([$displayAlbum, $bottomAlbum]);
         
         return view('site', compact('settings', 'albums', 'displayEntries', 'footerLinks', 'bottomEntries'));
