@@ -18,7 +18,7 @@ trait ProcessImage {
         if ($mime != 'jpeg') {
             $path = str_replace($mime, 'jpeg', $path);
         }
-        Image::make($image)->widen(600, function ($constraint) {
+        Image::make($image)->widen(1000, function ($constraint) {
             $constraint->upsize();
         })->interlace()->save(storage_path('app/' . $path));
         
