@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="navbar-end">
-            <a class="navbar-item" href="{{ $settings->get('instagram','') }}" target="_blank">
+            <a class="navbar-item" href="{{ $settings->get('instagram','') }}" target="_blank" rel="noreferrer">
                 <font-awesome-icon :icon="[ 'fab', 'facebook' ]" size="2x"/>
             </a>
-            <a class="navbar-item" href="{{ $settings->get('facebook','') }}" target="_blank">
+            <a class="navbar-item" href="{{ $settings->get('facebook','') }}" target="_blank" rel="noreferrer">
                 <font-awesome-icon :icon="[ 'fab', 'instagram' ]" size="2x"/>
             </a>
         </div>
