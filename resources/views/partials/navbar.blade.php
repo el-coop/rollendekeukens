@@ -2,7 +2,8 @@
     <div class="navbar-menu">
         <div class="navbar-start">
             <div class="navbar-item">
-                <a class="has-text-red" href="{{action('LocaleController@set', 'en')}}">English</a>|<a class="has-text-red" href="{{action('LocaleController@set', 'nl')}}">Nederlands</a>
+                <a href="{{action('LocaleController@set', 'en')}}">English</a>|<a
+                    href="{{action('LocaleController@set', 'nl')}}">Nederlands</a>
             </div>
         </div>
         <div class="navbar-end">

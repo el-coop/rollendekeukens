@@ -62,6 +62,7 @@ class PlatformScreen extends Screen {
             'logo' => $settings->get('logo', false) ? "/storage/{$settings->get('logo')}" : '',
             'links' => $links,
             'display-album' => $settings->get('display-album', 1),
+            'bottom-album' => $settings->get('bottom-album', 1),
         ];
     }
     

@@ -3,6 +3,14 @@
     justify-content: space-between;
 }
 
+.navbar-item > a {
+    color: $navbar-item-color;
+
+    &:hover {
+        color: $navbar-item-hover-color;
+    }
+}
+
 .navbar-end {
     display: flex;
 }

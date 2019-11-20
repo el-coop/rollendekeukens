@@ -1,9 +1,5 @@
 .has-text-red {
     color: $red;
-
-    &:hover {
-        color: lighten($red, 10%);
-    }
 }
 
 
