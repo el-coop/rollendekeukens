@@ -58,7 +58,7 @@ class PlatformScreen extends Screen {
             'contact_nl' => $settings->get('contact_nl', ''),
             'top_text_en' => $settings->get('top_text_en', ''),
             'top_text_nl' => $settings->get('top_text_nl', ''),
-            'meta-description' => $settings->get('description', ''),
+            'meta-description' => $settings->get('meta-description', ''),
             'logo' => $settings->get('logo', false) ? "/storage/{$settings->get('logo')}" : '',
             'links' => $links,
             'display-album' => $settings->get('display-album', 1),
