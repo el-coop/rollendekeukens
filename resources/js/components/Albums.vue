@@ -1,9 +1,9 @@
 <template>
     <carousel :entries="albums">
         <template #default="{entry, index}">
-            <figure class="image album" @click="open(entry)">
+            <a class="image album" @click="! entry.link ? open(entry) : ''" :href="entry.link">
                 <img class="album-image" :src="`/storage/${entry.thumbnail}`" :alt="entry.title">
-            </figure>
+            </a>
             <div class="has-text-centered has-text-weight-bold is-size-7" v-text="entry.title"></div>
         </template>
     </carousel>

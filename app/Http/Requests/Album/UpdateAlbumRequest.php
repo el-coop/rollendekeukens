@@ -9,7 +9,7 @@ use Storage;
 
 class UpdateAlbumRequest extends FormRequest {
     use ProcessImage;
-	/**
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -30,8 +30,9 @@ class UpdateAlbumRequest extends FormRequest {
         
         return [
             'album.thumbnail' => 'nullable|image|clamav',
-            'album.title_en' => 'required|string|unique:albums,title_en,'. $this->album->id,
-            'album.title_nl' => 'required|string|unique:albums,title_nl,' . $this->album->id
+            'album.title_en' => 'required|string|unique:albums,title_en,' . $this->album->id,
+            'album.title_nl' => 'required|string|unique:albums,title_nl,' . $this->album->id,
+            'album.link' => 'nullable|url'
         
         ];
     }
@@ -39,12 +40,13 @@ class UpdateAlbumRequest extends FormRequest {
     public function commit() {
         if ($this->hasFile('album.thumbnail')) {
             Storage::delete("public/{$this->album->thumbnail}");
-			$image = $this->file('album.thumbnail');
-
-			$path = 'public/images/' . $image->hashName();
-			$path = $this->processImage($image, $path);
-			$this->album->thumbnail = $path;
+            $image = $this->file('album.thumbnail');
+            
+            $path = 'public/images/' . $image->hashName();
+            $path = $this->processImage($image, $path);
+            $this->album->thumbnail = $path;
         }
+        $this->album->link = $this->input('album.link');
         $this->album->title_en = $this->input('album.title_en');
         $this->album->title_nl = $this->input('album.title_nl');
         $this->album->save();

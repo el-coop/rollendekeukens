@@ -28,7 +28,8 @@ class CreateAlbumRequest extends FormRequest {
         return [
             'album.thumbnail' => 'required|image|clamav',
             'album.title_en' => 'required|string|unique:albums,title_en',
-            'album.title_nl' => 'required|string|unique:albums,title_nl'
+            'album.title_nl' => 'required|string|unique:albums,title_nl',
+            'album.link' => 'nullable|url'
         ];
     }
     
@@ -36,12 +37,13 @@ class CreateAlbumRequest extends FormRequest {
         $album = new Album;
         $album->title_en = $this->input('album.title_en');
         $album->title_nl = $this->input('album.title_nl');
+        $album->link = $this->input('album.link');
         $image = $this->file('album.thumbnail');
         $path = 'public/images/' . $image->hashName();
         $path = $this->processImage($image, $path);
         $album->thumbnail = $path;
         $album->order = Album::count();
-        
+    
         $album->save();
         return $album;
     }

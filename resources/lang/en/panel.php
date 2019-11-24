@@ -44,7 +44,8 @@ return [
     'entryCreate' => 'Entry Details',
 	'displayAlbum' => 'Displayed Album',
 	'bottomAlbum' => 'Bottom Album',
-	'title-en' => 'Title EN',
+    'title-en' => 'Title EN',
+    'link' => 'Link',
 	'title-nl' => 'Title NL',
     'meta-description' => 'Meta Description',
     'image' => 'Image'

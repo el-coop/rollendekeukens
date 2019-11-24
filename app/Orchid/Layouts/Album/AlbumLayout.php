@@ -27,7 +27,11 @@ class AlbumLayout extends Rows {
                 ->required()
                 ->max(255)
                 ->horizontal()
-                ->title(__('panel.title-nl'))
+                ->title(__('panel.title-nl')),
+            Input::make('album.link')->type('text')
+                ->max(255)
+                ->horizontal()
+                ->title(__('panel.link'))
         
         ];
     }
