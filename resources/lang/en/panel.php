@@ -14,6 +14,7 @@ return [
     'edit' => 'Edit',
     'instagram' => 'Instagram Address',
     'facebook' => 'Facebook Address',
+    'pinterest' => 'Pinterest Address',
     'top-text-en' => 'Top Text EN',
     'top-text-nl' => 'Top Text NL',
     'footer-contact-en' => 'Contact Text EN',

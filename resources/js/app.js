@@ -8,12 +8,12 @@ require('./bootstrap');
 window.Vue = require('vue');
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook, faPinterest } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 require('./components');
 
-library.add(faChevronRight, faChevronLeft, faInstagram, faFacebook);
+library.add(faChevronRight, faChevronLeft, faInstagram, faFacebook, faPinterest);
 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

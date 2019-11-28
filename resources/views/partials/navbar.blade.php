@@ -13,6 +13,9 @@
             <a class="navbar-item" href="{{ $settings->get('facebook','') }}" target="_blank" rel="noreferrer">
                 <font-awesome-icon :icon="[ 'fab', 'instagram' ]" size="2x"/>
             </a>
+            <a class="navbar-item" href="{{ $settings->get('pinterest','') }}" target="_blank" rel="noreferrer">
+                <font-awesome-icon :icon="[ 'fab', 'pinterest' ]" size="2x"/>
+            </a>
         </div>
     </div>
 </nav>

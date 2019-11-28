@@ -54,6 +54,7 @@ class PlatformScreen extends Screen {
             'status' => Dashboard::checkUpdate(),
             'instagram' => $settings->get('instagram', ''),
             'facebook' => $settings->get('facebook', ''),
+            'pinterest' => $settings->get('pinterest', ''),
             'contact_en' => $settings->get('contact_en', ''),
             'contact_nl' => $settings->get('contact_nl', ''),
             'top_text_en' => $settings->get('top_text_en', ''),

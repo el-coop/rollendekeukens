@@ -33,11 +33,15 @@ class SiteSettingsLayout extends Rows {
                     ->type('url')
                     ->max(255)
                     ->title(__('panel.instagram')),
-                
+    
                 Input::make('facebook')
                     ->type('url')
                     ->max(255)
                     ->title(__('panel.facebook')),
+                Input::make('pinterest')
+                    ->type('url')
+                    ->max(255)
+                    ->title(__('panel.pinterest')),
             ],
             TinyMCE::make('top_text_en')
                 ->title(__('panel.top-text-en')),

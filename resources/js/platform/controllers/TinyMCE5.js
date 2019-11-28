@@ -73,7 +73,7 @@ export default class extends window.Controller {
             min_height: 300,
             height: 300,
             max_height: 600,
-            plugins: 'quickbars table link',
+            plugins: 'quickbars table link paste',
             toolbar: '',
             hidden_input: false,
             menubar: false,
@@ -83,6 +83,7 @@ export default class extends window.Controller {
             table_toolbar: "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
             inline: true,
             convert_urls: false,
+            paste_webkit_styles: "color font-size",
             setup: (element) => {
                 element.on('change', () => {
                     $(input).val(element.getContent());
