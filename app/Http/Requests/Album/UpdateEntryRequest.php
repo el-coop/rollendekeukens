@@ -35,6 +35,7 @@ class UpdateEntryRequest extends FormRequest {
         return [
             'type' => 'required|in:Photo,Text,Video',
             'entry.image' => 'image|nullable|clamav',
+			'entry.image_en' => 'image|nullable|clamav',
             'entry.video' => 'url|required_if:type,Video',
             'entry.text_en' => 'string|required_if:type,Text',
             'entry.text_nl' => 'string|required_if:type,Text'
@@ -51,6 +52,15 @@ class UpdateEntryRequest extends FormRequest {
             $path = $this->processImage($image, $path);
             $this->entry->image = $path;
         }
+		if ($this->hasFile('entry.image_en')) {
+			if (Storage::exists("public/{$this->entry->image_en}")) {
+				Storage::delete("public/{$this->entry->image_en}");
+			}
+			$image_en = $this->file('entry.image');
+			$path = 'public/images/' . $image_en->hashName();
+			$path = $this->processImage($image_en, $path);
+			$this->entry->image_en = $path;
+		}
         switch ($this->input('type')) {
             case 'Photo':
                 $entryExtended = new AlbumPhoto;

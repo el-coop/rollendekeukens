@@ -33,7 +33,7 @@ class CreateEntryRequest extends FormRequest {
         return [
             'type' => 'required|in:Photo,Text,Video',
             'entry.image' => 'image|required_if:type,Photo|required_if:type,video|clamav',
-			'entry.image_en' => 'image|clamv',
+			'entry.image_en' => 'image|nullable|clamav',
             'entry.video' => 'url|required_if:type,Video',
             'entry.text_en' => 'string|required_if:type,Text',
             'entry.text_nl' => 'string|required_if:type,Text'
