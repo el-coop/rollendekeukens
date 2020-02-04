@@ -17,7 +17,8 @@ class CreateAlbumEntriesTable extends Migration {
             $table->unsignedBigInteger('entry_id');
             $table->string('entry_type');
             $table->string('image')->nullable();
-            $table->integer('order')->unsigned();
+			$table->string('image_en')->nullable();
+			$table->integer('order')->unsigned();
             $table->timestamps();
             
             $table->foreign('album_id')->references('id')

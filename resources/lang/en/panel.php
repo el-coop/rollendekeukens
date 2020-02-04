@@ -49,6 +49,7 @@ return [
     'link' => 'Link',
 	'title-nl' => 'Title NL',
     'meta-description' => 'Meta Description',
-    'image' => 'Image'
+    'image' => 'Image',
+	'image_en' => 'Image EN'
     
 ];

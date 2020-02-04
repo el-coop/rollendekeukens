@@ -9,7 +9,8 @@ $factory->define(AlbumEntry::class, function (Faker $faker) {
     $entry_type = $faker->randomElement([\App\Models\AlbumPhoto::class, \App\Models\AlbumText::class, \App\Models\AlbumVideo::class]);
     return [
         'image' => 'seeds/albumentry.jpg',
-        'entry_type' => $entry_type,
+		'image_en' => 'seeds/albumentry_en.jpg',
+		'entry_type' => $entry_type,
         'entry_id' => factory($entry_type)->create()
     ];
 });

@@ -33,6 +33,7 @@ class CreateEntryRequest extends FormRequest {
         return [
             'type' => 'required|in:Photo,Text,Video',
             'entry.image' => 'image|required_if:type,Photo|required_if:type,video|clamav',
+			'entry.image_en' => 'image|clamv',
             'entry.video' => 'url|required_if:type,Video',
             'entry.text_en' => 'string|required_if:type,Text',
             'entry.text_nl' => 'string|required_if:type,Text'
@@ -51,6 +52,12 @@ class CreateEntryRequest extends FormRequest {
             $path = $this->processImage($image, $path);
             $entry->image = $path;
         }
+        if ($this->hasFile('entry.image_en')){
+			$image_en = $this->file('entry.image');
+			$path = 'public/images/' . $image_en->hashName();
+			$path = $this->processImage($image_en, $path);
+			$entry->image_en = $path;
+		}
         switch ($this->input('type')) {
             case 'Photo':
                 $entryExtended = new AlbumPhoto;

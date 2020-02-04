@@ -10,7 +10,7 @@ class AlbumEntry extends Model {
     use Cacheable;
     use AsSource;
     protected $with = ['entry'];
-    protected $appends = ['type'];
+    protected $appends = ['type', 'image'];
     
     public function album() {
         return $this->belongsTo(Album::class);
@@ -29,5 +29,12 @@ class AlbumEntry extends Model {
 
 	public function getTypeAttribute() {
 		return str_replace("Album", "",class_basename($this->entry));
+    }
+
+	public function getImageAttribute() {
+		if (app()->getLocale() == 'en' && $this->image_en){
+			return $this->image_en;
+		}
+		return $this->image;
     }
 }
