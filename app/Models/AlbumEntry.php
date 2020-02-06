@@ -11,15 +11,15 @@ class AlbumEntry extends Model {
     use AsSource;
     protected $with = ['entry'];
     protected $appends = ['type', 'image'];
-    
+
     public function album() {
         return $this->belongsTo(Album::class);
     }
-    
+
     public function entry() {
         return $this->morphTo();
     }
-    
+
     public function getPreviewAttribute() {
         if (method_exists($this->entry, 'getPreviewAttribute')) {
             return $this->entry->preview;
@@ -35,6 +35,6 @@ class AlbumEntry extends Model {
 		if (app()->getLocale() == 'en' && $this->image_en){
 			return $this->image_en;
 		}
-		return $this->image;
+		return $this->attributes['image'];
     }
 }
