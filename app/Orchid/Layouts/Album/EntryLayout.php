@@ -24,11 +24,15 @@ class EntryLayout extends Tabs {
                 
                 ImageUpload::make('entry.image')
                     ->title(__('panel.image')),
+				ImageUpload::make('entry.image_en')
+					->title(__('panel.image_en')),
             ]),
             'Text' => Layout::rows([
                 Input::make('entry.id')->type('hidden'),
                 ImageUpload::make('entry.image')
                     ->title(__('panel.image')),
+				ImageUpload::make('entry.image_en')
+					->title(__('panel.image_en')),
                 TinyMCE::make('entry.text_en')
                     ->title(__('panel.text-en')),
                 TinyMCE::make('entry.text_nl')
@@ -38,6 +42,8 @@ class EntryLayout extends Tabs {
                 Input::make('entry.id')->type('hidden'),
                 ImageUpload::make('entry.image')
                     ->title(__('panel.image')),
+				ImageUpload::make('entry.image_en')
+					->title(__('panel.image_en')),
                 Input::make('entry.video')
                     ->type('url')
                     ->max(255)
