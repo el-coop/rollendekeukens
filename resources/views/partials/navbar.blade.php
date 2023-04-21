@@ -7,6 +7,11 @@
             </div>
         </div>
         <div class="navbar-end">
+            @if($settings->get('email',false))
+                <a class="navbar-item navbar-item__email" href="mailto:{{  $settings->get('email') }}" target="_blank" rel="noreferrer">
+                    {{ $settings->get('email') }}
+                </a>
+            @endif
             <a class="navbar-item" href="{{ $settings->get('facebook','') }}" target="_blank" rel="noreferrer">
                 <font-awesome-icon :icon="[ 'fab', 'facebook' ]" size="2x"/>
             </a>

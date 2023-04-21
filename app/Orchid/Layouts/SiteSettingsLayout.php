@@ -16,7 +16,7 @@ use Orchid\Screen\Fields\TinyMCE;
 use Orchid\Screen\Layouts\Rows;
 
 class SiteSettingsLayout extends Rows {
-    
+
     /**
      * Views.
      *
@@ -24,7 +24,7 @@ class SiteSettingsLayout extends Rows {
      */
     protected function fields(): array {
         $locale = app()->getLocale();
-        
+
         return [
             ImageUpload::make('logo')
                 ->title(__('panel.logo')),
@@ -33,7 +33,7 @@ class SiteSettingsLayout extends Rows {
                     ->type('url')
                     ->max(255)
                     ->title(__('panel.instagram')),
-    
+
                 Input::make('facebook')
                     ->type('url')
                     ->max(255)
@@ -42,17 +42,21 @@ class SiteSettingsLayout extends Rows {
                     ->type('url')
                     ->max(255)
                     ->title(__('panel.pinterest')),
+                Input::make('email')
+                    ->type('text')
+                    ->max(255)
+                    ->title(__('panel.email')),
             ],
             TinyMCE::make('top_text_en')
                 ->title(__('panel.top-text-en')),
             TinyMCE::make('top_text_nl')
                 ->title(__('panel.top-text-nl')),
-    
+
             TinyMCE::make('contact_en')
                 ->title(__('panel.footer-contact-en')),
             TinyMCE::make('contact_nl')
                 ->title(__('panel.footer-contact-nl')),
-            
+
             TextArea::make('meta-description')
                 ->title('panel.meta-description'),
             Select::make('display-album')
@@ -67,7 +71,7 @@ class SiteSettingsLayout extends Rows {
                 ->method('store')
                 ->turbolinks(false)
                 ->type(Button::PRIMARY)
-        
+
         ];
     }
 }
