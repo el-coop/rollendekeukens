@@ -32,14 +32,14 @@ class PlatformScreen extends Screen {
      * @var string
      */
     public $name = 'panel.home';
-    
+
     /**
      * Display header description.
      *
      * @var string
      */
     public $description = 'panel.dashboard';
-    
+
     /**
      * Query data.
      *
@@ -47,7 +47,7 @@ class PlatformScreen extends Screen {
      * @return array
      */
     public function query(): array {
-        
+
         $settings = SiteSetting::select('value', 'key')->get()->pluck('value', 'key');
         $links = FooterLink::paginate();
         return [
@@ -59,6 +59,7 @@ class PlatformScreen extends Screen {
             'contact_nl' => $settings->get('contact_nl', ''),
             'top_text_en' => $settings->get('top_text_en', ''),
             'top_text_nl' => $settings->get('top_text_nl', ''),
+            'email' => $settings->get('email', ''),
             'meta-description' => $settings->get('meta-description', ''),
             'logo' => $settings->get('logo', false) ? "/storage/{$settings->get('logo')}" : '',
             'links' => $links,
@@ -66,7 +67,7 @@ class PlatformScreen extends Screen {
             'bottom-album' => $settings->get('bottom-album', 1),
         ];
     }
-    
+
     /**
      * Button commands.
      *
@@ -87,10 +88,10 @@ class PlatformScreen extends Screen {
                 ->turbolinks(false)
                 ->target('_blank')
                 ->icon('icon-globe-alt'),
-        
+
         ];
     }
-    
+
     /**
      * Views.
      *
@@ -98,7 +99,7 @@ class PlatformScreen extends Screen {
      */
     public function layout(): array {
         return [
-            
+
             Layout::tabs([
                 __('panel.settingsTab') => SiteSettingsLayout::class,
                 __('panel.linksTab') => Layout::blank([
@@ -112,13 +113,13 @@ class PlatformScreen extends Screen {
                     ]),
                 ])
             ]),
-            
+
             Layout::modal('footerLinkModal', [
                 FooterLinkLayout::class
             ])->rawClick()->title(__('panel.linkModalTitle'))->async('asyncFooterLink'),
         ];
     }
-    
+
     public function asyncFooterLink(Request $request): array {
         $footerLink = FooterLink::find($request->input(0, 0));
         if (!$footerLink) {
@@ -126,26 +127,26 @@ class PlatformScreen extends Screen {
         } else {
             $footerLink->logo = "/storage/{$footerLink->logo}";
         }
-        
+
         return [
             'link' => $footerLink,
         ];
     }
-    
+
     public function saveLink(UpdateFooterLinkRequest $request) {
         $request->commit();
         FooterLink::flushCache();
         Alert::success(__('panel.linkSaved'));
         return back();
     }
-    
+
     public function deleteLink($link, DestroyFooterLinkRequest $request) {
         $request->commit();
         FooterLink::flushCache();
         Alert::info(__('panel.linkDeleted'));
         return back();
     }
-    
+
     public function store(UpdateSettingsRequest $request) {
         $request->commit();
         SiteSetting::flushCache();

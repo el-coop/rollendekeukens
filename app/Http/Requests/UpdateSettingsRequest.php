@@ -9,8 +9,8 @@ use Storage;
 
 class UpdateSettingsRequest extends FormRequest {
     use ProcessImage;
-    protected $settings = ['instagram','pinterest', 'facebook', 'top_text_en', 'top_text_nl', 'contact_en', 'contact_nl', 'display-album', 'bottom-album', 'meta-description'];
-    
+    protected $settings = ['instagram','pinterest', 'facebook', 'top_text_en', 'top_text_nl','email', 'contact_en', 'contact_nl', 'display-album', 'bottom-album', 'meta-description'];
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -19,7 +19,7 @@ class UpdateSettingsRequest extends FormRequest {
     public function authorize() {
         return $this->user();
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -33,6 +33,7 @@ class UpdateSettingsRequest extends FormRequest {
             'pinterest' => 'nullable|string|url',
             'top_text_en' => 'nullable|string',
             'top_text_nl' => 'nullable|string',
+            'email' => 'nullable|string',
             'contact_en' => 'nullable|string',
             'contact_nl' => 'nullable|string',
             'meta-description' => 'nullable|string',
@@ -40,7 +41,7 @@ class UpdateSettingsRequest extends FormRequest {
             'bottom-album' => 'nullable|integer|exists:albums,id'
         ];
     }
-    
+
     public function commit() {
         foreach ($this->settings as $key) {
             $setting = $this->findOrNew($key);
@@ -59,14 +60,14 @@ class UpdateSettingsRequest extends FormRequest {
             $logo->save();
         }
     }
-    
+
     protected function findOrNew($key) {
         $setting = SiteSetting::where('key', $key)->first();
         if (!$setting) {
             $setting = new SiteSetting;
             $setting->key = $key;
         }
-        
+
         return $setting;
     }
 }

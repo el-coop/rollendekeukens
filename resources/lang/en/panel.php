@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     'presents' => 'presents',
     'createBy' => 'Created by',
     'using' => 'using',
@@ -50,6 +50,7 @@ return [
 	'title-nl' => 'Title NL',
     'meta-description' => 'Meta Description',
     'image' => 'Image',
-	'image_en' => 'Image EN'
-    
+	'image_en' => 'Image EN',
+    'email' => 'E-mail'
+
 ];

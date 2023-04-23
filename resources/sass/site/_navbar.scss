@@ -3,12 +3,18 @@
     justify-content: space-between;
 }
 
+.navbar-item__email {
+    color: $navbar-item-hover-color !important;
+    font-weight: bold;
+}
+
 .navbar-item > a {
     color: $navbar-item-color;
 
     &:hover {
         color: $navbar-item-hover-color;
     }
+
 }
 
 .navbar-end {

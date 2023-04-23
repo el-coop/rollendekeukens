@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'instant-tokens' => [
+        'user' => env('INSTANT_TOKENS_USER'),
+        'secret' => env('INSTANT_TOKENS_SECRET'),
+        'account' => env('INSTAGRAM_ACCOUNT'),
+    ]
 ];
