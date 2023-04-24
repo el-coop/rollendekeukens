@@ -6,6 +6,14 @@
 .navbar-item__email {
     color: $navbar-item-hover-color !important;
     font-weight: bold;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+
+    @media (min-width: $tablet) {
+        width: auto;
+    }
 }
 
 .navbar-item > a {
@@ -17,6 +25,13 @@
 
 }
 
+.navbar-start {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-end {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
