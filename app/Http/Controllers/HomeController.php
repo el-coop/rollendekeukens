@@ -27,12 +27,16 @@ class HomeController extends Controller {
             $displayEntries = collect();
         }
         $bottomAlbum = $settings->get('bottom-album');
-        $bottomEntries = Cache::remember(600, 'ig-bottom-entries', function() use ($instagramAlbumService) {
-            return $instagramAlbumService->getAlbums();
-        });
+        try {
+            $bottomEntries = Cache::remember(600, 'ig-bottom-entries', function() use ($instagramAlbumService) {
+                return $instagramAlbumService->getAlbums();
+            });
+        } catch (\Exception $exception) {
+            $bottomEntries = collect([]);
+        }
 
         if (!$bottomEntries->count()) {
-            $bottomEntries = $albums->get($bottomAlbum)->entries;
+            $bottomEntries = $albums->get($bottomAlbum)->entries ?? collect([]);
         }
 
         $albums->forget([$displayAlbum, $bottomAlbum]);
